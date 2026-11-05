@@ -822,6 +822,210 @@
         padding: 26px;
       }
     }
+   .education-section {
+  padding: 78px 0;
+}
+ 
+.education-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+ 
+.education-kicker {
+  color: var(--blue);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+ 
+.education-heading h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.04em;
+}
+ 
+.education-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: 30px;
+  align-items: center;
+  overflow: hidden;
+  padding: 42px;
+  border: 1px solid #263e50;
+  border-radius: 28px;
+  color: #f4f8fa;
+  background:
+    radial-gradient(circle at 83% 12%, rgba(47, 155, 189, 0.26), transparent 26%),
+    radial-gradient(circle at 8% 100%, rgba(233, 169, 62, 0.17), transparent 22%),
+    linear-gradient(135deg, #071722, #0b2239 55%, #102f40);
+  box-shadow: 0 20px 45px rgba(11, 34, 57, 0.2);
+}
+ 
+.education-glow {
+  position: absolute;
+  top: -80px;
+  right: 110px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(99, 196, 223, 0.1);
+  filter: blur(10px);
+}
+ 
+.education-logo-wrap {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 96px;
+  height: 96px;
+  place-items: center;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.1);
+}
+ 
+.education-logo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+ 
+.education-logo-fallback {
+  display: none;
+  width: 60px;
+  height: 60px;
+  place-items: center;
+  border-radius: 18px;
+  color: #071722;
+  background: #e9a93e;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+ 
+.education-content {
+  position: relative;
+  z-index: 1;
+}
+ 
+.education-school {
+  margin: 0 0 8px;
+  color: #79d5eb;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+ 
+.education-content h3 {
+  margin: 0 0 9px;
+  color: white;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.15;
+}
+ 
+.education-program {
+  margin: 0;
+  color: #c5d7de;
+  font-size: 1rem;
+}
+ 
+.education-program strong {
+  color: white;
+}
+ 
+.education-program span {
+  margin: 0 8px;
+  color: #e9a93e;
+}
+ 
+.education-stats {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  gap: 10px;
+}
+ 
+.education-stats div {
+  min-width: 110px;
+  padding: 13px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.07);
+}
+ 
+.education-stats span,
+.education-stats strong {
+  display: block;
+}
+ 
+.education-stats span {
+  margin-bottom: 3px;
+  color: #8eb1bd;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+ 
+.education-stats strong {
+  color: white;
+  font-size: 0.92rem;
+}
+ 
+@media (max-width: 860px) {
+  .education-card {
+    grid-template-columns: 90px 1fr;
+  }
+ 
+  .education-stats {
+    grid-column: 1 / -1;
+  }
+}
+ 
+@media (max-width: 560px) {
+  .education-heading {
+    display: block;
+  }
+ 
+  .education-heading h2 {
+    margin-top: 8px;
+  }
+ 
+  .education-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 28px;
+  }
+ 
+  .education-logo-wrap {
+    width: 78px;
+    height: 78px;
+  }
+ 
+  .education-stats {
+    grid-template-columns: 1fr;
+  }
+ 
+  .education-stats div {
+    min-width: 0;
+  }
+ 
+  .education-program span {
+    display: none;
+  }
+ 
+  .education-program strong {
+    display: block;
+    margin-bottom: 4px;
+  }
+}
   </style>
 </head>
  
@@ -835,6 +1039,7 @@
     <div class="nav-actions">
       <div class="nav-links">
         <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </div>
@@ -889,12 +1094,6 @@
           <img
             src="assets/image/hossain-headshot.jpg"
             alt="Professional headshot of Hossain Sowrob">
-        </div>
- 
-        <div class="photo-note">
-          <small>WESTERN MICHIGAN UNIVERSITY</small>
-          <strong>BBA, Business Analytics & Supply Chain Management</strong>
-          <span>Expected May 2028</span>
         </div>
  
         <div class="photo-note photo-note-bottom">
@@ -1095,6 +1294,54 @@
         </div>
       </div>
     </section>
+
+   <section id="education" class="education-section">
+<div class="education-heading">
+<span class="education-kicker">Education</span>
+<h2>Built at Western Michigan University.</h2>
+</div>
+ 
+  <article class="education-card">
+<div class="education-glow"></div>
+ 
+    <div class="education-logo-wrap">
+<img
+        src="assets/image/wmu-logo.jpeg"
+        alt="Western Michigan University logo"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+ 
+      <span class="education-logo-fallback">W</span>
+</div>
+ 
+    <div class="education-content">
+<p class="education-school">WESTERN MICHIGAN UNIVERSITY</p>
+<h3>Bachelor of Business Administration</h3>
+ 
+      <p class="education-program">
+        Major: <strong>Business Analytics</strong>
+<span>•</span>
+        Minor: <strong>Supply Chain Management</strong>
+</p>
+</div>
+ 
+    <div class="education-stats">
+<div>
+<span>CGPA</span>
+<strong>3.56</strong>
+</div>
+ 
+      <div>
+<span>Expected</span>
+<strong>May 2028</strong>
+</div>
+ 
+      <div>
+<span>Location</span>
+<strong>Kalamazoo, MI</strong>
+</div>
+</div>
+</article>
+</section>
  
     <section id="projects">
       <div class="section-heading">
@@ -1431,7 +1678,7 @@
  
           <a
             class="button button-primary"
-            href="YOUR-LINKEDIN-URL"
+            href="https://www.linkedin.com/in/hossainsowrob/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BPmSt9CRiSLeScY%2FmbKjeyw%3D%3D"
             target="_blank"
             rel="noopener noreferrer">
             LinkedIn
@@ -1458,7 +1705,7 @@
   </main>
  
   <footer>
-    © 2026 Hossain Sowrob · Built with GitHub Pages
+    © 2026 Hossain Sowrob
   </footer>
  
   <script>
