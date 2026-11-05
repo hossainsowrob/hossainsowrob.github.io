@@ -3,26 +3,258 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Power BI Dashboard Case Study | Hossain Sowrob</title>
-<style>
+<title>Operations Dashboard Demo | Hossain Sowrob</title>
+ 
+  <style>
+    :root {
+      --navy: #0b2239;
+      --blue: #167d9d;
+      --teal: #47a59b;
+      --gold: #e5a53d;
+      --light: #f4f8fa;
+      --border: #dce7ed;
+      --text: #243444;
+      --muted: #667785;
+      --white: #ffffff;
+    }
+ 
+    * {
+      box-sizing: border-box;
+    }
+ 
     body {
       margin: 0;
-      background: #f7fafc;
-      color: #243444;
+      background: var(--light);
+      color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.65;
+      line-height: 1.55;
     }
  
     main {
-      width: min(920px, 90%);
+      width: min(1120px, 94%);
       margin: 0 auto;
-      padding: 55px 0 75px;
+      padding: 34px 0 70px;
     }
  
     .back {
-      color: #167d9d;
-      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--blue);
+      font-weight: 800;
       text-decoration: none;
+    }
+ 
+    .notice {
+      margin-bottom: 20px;
+      padding: 14px 16px;
+      border-left: 5px solid var(--gold);
+      border-radius: 10px;
+      background: #fff8e7;
+      color: #695022;
+      font-size: 0.92rem;
+    }
+ 
+    .dashboard {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--white);
+      box-shadow: 0 16px 42px rgba(11, 34, 57, 0.1);
+    }
+ 
+    .dashboard-header {
+      padding: 26px 30px;
+      color: white;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+    }
+ 
+    .dashboard-header h1 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      line-height: 1.1;
+    }
+ 
+    .dashboard-header p {
+      margin: 9px 0 0;
+      color: #d8f0f5;
+    }
+ 
+    .dashboard-body {
+      padding: 24px;
+    }
+ 
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+ 
+    .filter {
+      min-width: 160px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fbfdfe;
+      color: #4c6473;
+      font-size: 0.87rem;
+    }
+ 
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+ 
+    .kpi {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: white;
+    }
+ 
+    .kpi-label {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+ 
+    .kpi-value {
+      margin: 8px 0 4px;
+      color: var(--navy);
+      font-size: 2rem;
+      font-weight: 900;
+    }
+ 
+    .kpi-change {
+      color: var(--teal);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+ 
+    .visual-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+ 
+    .visual {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: white;
+    }
+ 
+    .visual h2 {
+      margin: 0 0 18px;
+      color: var(--navy);
+      font-size: 1.08rem;
+    }
+ 
+    .bars {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      height: 205px;
+      gap: 14px;
+      padding: 0 8px;
+      border-bottom: 1px solid #cbdde5;
+    }
+ 
+    .bar-group {
+      display: flex;
+      flex: 1;
+      height: 100%;
+      flex-direction: column;
+      justify-content: end;
+      align-items: center;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 0.73rem;
+    }
+ 
+    .bar {
+      width: 75%;
+      border-radius: 8px 8px 0 0;
+      background: linear-gradient(to top, var(--blue), #65b7cd);
+    }
+ 
+    .priority-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+ 
+    .priority-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #edf2f4;
+      font-size: 0.9rem;
+    }
+ 
+    .priority-list li:last-child {
+      border-bottom: 0;
+    }
+ 
+    .status {
+      padding: 3px 8px;
+      border-radius: 999px;
+      color: #895b14;
+      background: #fff0cf;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+ 
+    .detail-table {
+      width: 100%;
+      margin-top: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      border-collapse: collapse;
+      background: white;
+      font-size: 0.86rem;
+    }
+ 
+    .detail-table th,
+    .detail-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #edf2f4;
+    }
+ 
+    .detail-table th {
+      color: #496270;
+      background: #f7fafc;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+    }
+ 
+    .detail-table tr:last-child td {
+      border-bottom: 0;
+    }
+ 
+    .skills {
+      margin-top: 25px;
+      padding: 22px;
+      border-radius: 14px;
+      background: #eaf5f8;
+    }
+ 
+    .skills h2 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 1.1rem;
+    }
+ 
+    .skills p {
+      margin: 0 0 10px;
+      color: #426170;
     }
  
     .tag {
@@ -30,83 +262,202 @@
       margin: 5px 5px 0 0;
       padding: 6px 10px;
       border-radius: 999px;
-      background: #eaf5f8;
       color: #24617a;
-      font-size: 0.82rem;
-      font-weight: bold;
-    }
- 
-    .panel {
-      margin-top: 24px;
-      padding: 25px;
-      border: 1px solid #dce7ed;
-      border-radius: 18px;
       background: white;
-      box-shadow: 0 8px 22px rgba(11, 34, 57, 0.05);
+      font-size: 0.8rem;
+      font-weight: 800;
     }
  
-    h1, h2 {
-      color: #0b2239;
+    @media (max-width: 780px) {
+      .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+ 
+      .visual-grid {
+        grid-template-columns: 1fr;
+      }
     }
  
-    h1 {
-      font-size: clamp(2.3rem, 6vw, 4.4rem);
-      line-height: 1.05;
-    }
+    @media (max-width: 480px) {
+      main {
+        width: min(96%, 1120px);
+      }
  
-    li {
-      margin-bottom: 9px;
+      .kpi-grid {
+        grid-template-columns: 1fr;
+      }
+ 
+      .dashboard-body {
+        padding: 15px;
+      }
+ 
+      .dashboard-header {
+        padding: 20px;
+      }
+ 
+      .detail-table {
+        font-size: 0.73rem;
+      }
+ 
+      .detail-table th,
+      .detail-table td {
+        padding: 9px 6px;
+      }
     }
 </style>
 </head>
+ 
 <body>
 <main>
 <a class="back" href="../index.html">← Back to portfolio</a>
  
-    <h1>Interactive Operations Analytics Dashboard</h1>
+    <div class="notice">
+      Portfolio demonstration only: every label, figure, chart, and record on this page is fictional.
+      No internal dashboard, company data, supplier information, or confidential performance metrics are shown.
+</div>
  
-    <p>
-      I built interactive Power BI dashboards that help operational users
-      review performance, identify follow-up priorities, and investigate
-      detailed records through guided navigation.
+    <section class="dashboard">
+<header class="dashboard-header">
+<h1>Operations Performance Dashboard</h1>
+<p>Dashboard design for prioritization, trend review, and detailed follow-up.</p>
+</header>
+ 
+      <div class="dashboard-body">
+<div class="filters">
+<div class="filter">Period: Current Month ▾</div>
+<div class="filter">Team: All Teams ▾</div>
+<div class="filter">Category: All Categories ▾</div>
+</div>
+ 
+        <div class="kpi-grid">
+<article class="kpi">
+<div class="kpi-label">Open Items</div>
+<div class="kpi-value">184</div>
+<div class="kpi-change">↓ 12% vs. prior period</div>
+</article>
+ 
+          <article class="kpi">
+<div class="kpi-label">Priority Items</div>
+<div class="kpi-value">37</div>
+<div class="kpi-change">↑ 5 items this week</div>
+</article>
+ 
+          <article class="kpi">
+<div class="kpi-label">On-Time Rate</div>
+<div class="kpi-value">92%</div>
+<div class="kpi-change">↑ 3 points vs. target</div>
+</article>
+ 
+          <article class="kpi">
+<div class="kpi-label">Items Resolved</div>
+<div class="kpi-value">126</div>
+<div class="kpi-change">↑ 18% vs. prior period</div>
+</article>
+</div>
+ 
+        <div class="visual-grid">
+<article class="visual">
+<h2>Weekly Activity Trend</h2>
+ 
+            <div class="bars">
+<div class="bar-group">
+<div class="bar" style="height: 44%;"></div>
+                W1
+</div>
+ 
+              <div class="bar-group">
+<div class="bar" style="height: 61%;"></div>
+                W2
+</div>
+ 
+              <div class="bar-group">
+<div class="bar" style="height: 52%;"></div>
+                W3
+</div>
+ 
+              <div class="bar-group">
+<div class="bar" style="height: 79%;"></div>
+                W4
+</div>
+ 
+              <div class="bar-group">
+<div class="bar" style="height: 66%;"></div>
+                W5
+</div>
+ 
+              <div class="bar-group">
+<div class="bar" style="height: 89%;"></div>
+                W6
+</div>
+</div>
+</article>
+ 
+          <article class="visual">
+<h2>Follow-Up Priorities</h2>
+ 
+            <ul class="priority-list">
+<li><span>Category A</span><span class="status">High</span></li>
+<li><span>Category B</span><span class="status">High</span></li>
+<li><span>Category C</span><span class="status">Review</span></li>
+<li><span>Category D</span><span class="status">Review</span></li>
+<li><span>Category E</span><span class="status">Monitor</span></li>
+</ul>
+</article>
+</div>
+ 
+        <table class="detail-table">
+<thead>
+<tr>
+<th>Reference</th>
+<th>Category</th>
+<th>Owner</th>
+<th>Priority</th>
+<th>Status</th>
+</tr>
+</thead>
+ 
+          <tbody>
+<tr>
+<td>DEMO-1001</td>
+<td>Category A</td>
+<td>Team Alpha</td>
+<td>High</td>
+<td>In Review</td>
+</tr>
+ 
+            <tr>
+<td>DEMO-1002</td>
+<td>Category B</td>
+<td>Team Beta</td>
+<td>High</td>
+<td>Action Needed</td>
+</tr>
+ 
+            <tr>
+<td>DEMO-1003</td>
+<td>Category C</td>
+<td>Team Alpha</td>
+<td>Medium</td>
+<td>Monitoring</td>
+</tr>
+</tbody>
+</table>
+ 
+        <section class="skills">
+<h2>What This Demonstrates</h2>
+<p>
+            I designed Power BI reporting experiences that combine summary KPIs,
+            filters, trends, detailed records, and navigation so users can
+            investigate operational priorities efficiently.
 </p>
  
-    <section class="panel">
-<h2>My Contribution</h2>
-<ul>
-<li>Designed summary pages with KPI cards, charts, filters, and detailed tables.</li>
-<li>Created deep-dive pages so users can investigate information behind a metric.</li>
-<li>Added button-based navigation and Back buttons for a simple user experience.</li>
-<li>Built views that support recurring operational review and follow-up.</li>
-</ul>
-</section>
- 
-    <section class="panel">
-<h2>How I Built It</h2>
-<ul>
-<li>Identified the questions users needed the dashboard to answer.</li>
-<li>Organized operational data for analysis, filtering, and detailed review.</li>
-<li>Built measures and visuals in Power BI for trend and performance analysis.</li>
-<li>Designed the report layout and navigation flow for quick investigation.</li>
-</ul>
-</section>
- 
-    <section class="panel">
-<h2>Tools Used</h2>
-<span class="tag">Power BI</span>
+          <span class="tag">Power BI</span>
 <span class="tag">Power Query</span>
 <span class="tag">DAX</span>
-<span class="tag">Excel</span>
-<span class="tag">Data Visualization</span>
+<span class="tag">Data Modeling</span>
+<span class="tag">Dashboard UX</span>
 </section>
- 
-    <section class="panel">
-<h2>Confidentiality Note</h2>
-<p>
-        This project page uses generalized descriptions and does not include
-        internal data, report names, supplier information, screenshots, or
-        company-specific metrics.
-</p>
+</div>
 </section>
 </main>
 </body>
