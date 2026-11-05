@@ -1,1 +1,200 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Analytics Dashboard | Hossain Sowrob</title>
+ 
+  <style>
+    :root {
+      --navy: #0b2239;
+      --blue: #167d9d;
+      --light-blue: #eaf5f8;
+      --text: #243444;
+      --muted: #667785;
+      --border: #dce7ed;
+    }
+ 
+    * {
+      box-sizing: border-box;
+    }
+ 
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7fafc;
+      color: var(--text);
+      line-height: 1.65;
+    }
+ 
+    main {
+      width: min(930px, 90%);
+      margin: 0 auto;
+      padding: 54px 0 75px;
+    }
+ 
+    .back {
+      display: inline-block;
+      color: var(--blue);
+      font-weight: 700;
+      text-decoration: none;
+      margin-bottom: 28px;
+    }
+ 
+    .label {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--light-blue);
+      color: var(--blue);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+    }
+ 
+    h1 {
+      margin: 14px 0 18px;
+      color: var(--navy);
+      font-size: clamp(2.3rem, 6vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+    }
+ 
+    .intro {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.12rem;
+    }
+ 
+    h2 {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: 1.55rem;
+    }
+ 
+    .panel {
+      margin-top: 24px;
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: white;
+      box-shadow: 0 8px 22px rgba(11, 34, 57, 0.05);
+    }
+ 
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+ 
+    .tag {
+      display: inline-block;
+      margin: 5px 5px 0 0;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--light-blue);
+      color: #24617a;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+ 
+    .highlight {
+      border-left: 5px solid var(--blue);
+      background: #f1fafc;
+    }
+ 
+    li {
+      margin-bottom: 9px;
+    }
+ 
+    @media (max-width: 650px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+ 
+      main {
+        width: min(94%, 930px);
+        padding-top: 34px;
+      }
+    }
+</style>
+</head>
+ 
+<body>
+<main>
+<a class="back" href="../index.html">← Back to portfolio</a>
+ 
+    <div class="label">POWER BI · CASE STUDY</div>
+ 
+    <h1>Interactive Operations Analytics Dashboard</h1>
+ 
+    <p class="intro">
+      I designed an interactive Power BI reporting experience that helps users
+      move from high-level performance summaries to detailed records that need
+      investigation and follow-up.
+</p>
+ 
+    <section class="panel">
+<h2>Challenge</h2>
+<p>
+        Operational information is often spread across many detailed records.
+        The goal was to make performance trends, priorities, and follow-up items
+        easier to review through one organized dashboard experience.
+</p>
+</section>
+ 
+    <section class="panel">
+<h2>What I Built</h2>
+<ul>
+<li>Summary pages with KPI cards, trend charts, and target comparisons.</li>
+<li>Interactive filters that allow users to focus on a specific team, category, or time period.</li>
+<li>Button-based navigation from high-level summaries into detailed analysis pages.</li>
+<li>Detailed tables that help users investigate records requiring follow-up.</li>
+<li>Back-button navigation that returns users to the original dashboard page.</li>
+</ul>
+</section>
+ 
+    <section class="grid">
+<div class="panel">
+<h2>How I Built It</h2>
+<ol>
+<li>Identified the operational questions that users needed to answer.</li>
+<li>Prepared and organized data for reporting, filtering, and detail-level analysis.</li>
+<li>Created Power BI measures and visuals for trends, KPI summaries, and comparisons.</li>
+<li>Designed a consistent dashboard layout for easy review.</li>
+<li>Added guided navigation to make deep-dive analysis simple for users.</li>
+</ol>
+</div>
+ 
+      <div class="panel">
+<h2>Tools Used</h2>
+<span class="tag">Power BI</span>
+<span class="tag">Power Query</span>
+<span class="tag">DAX</span>
+<span class="tag">Data Modeling</span>
+<span class="tag">Data Visualization</span>
+<span class="tag">Excel</span>
+</div>
+</section>
+ 
+    <section class="panel highlight">
+<h2>Outcome</h2>
+<p>
+        The dashboard created a more structured way to review operations,
+        investigate detailed records, and support timely follow-up. The guided
+        drill-down experience made it easier to move from a summary view to the
+        information needed for action.
+</p>
+</section>
+ 
+    <section class="panel">
+<h2>Confidentiality</h2>
+<p>
+        This page intentionally uses general language. It does not show internal
+        screenshots, report names, business data, supplier details, transaction
+        details, or confidential performance metrics.
+</p>
+</section>
+</main>
+</body>
+</html>
