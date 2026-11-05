@@ -6,104 +6,375 @@
 <title>AI-Enabled Requisition Automation | Hossain Sowrob</title>
  
   <style>
+
     :root {
+
       --navy: #0b2239;
+
       --blue: #167d9d;
+
       --light-blue: #eaf5f8;
+
       --gold: #e9a93e;
+
       --text: #243444;
+
       --muted: #667785;
+
       --border: #dce7ed;
+
+      --white: #ffffff;
+
     }
  
     * {
+
       box-sizing: border-box;
+
     }
  
     body {
+
       margin: 0;
+
       font-family: Arial, Helvetica, sans-serif;
+
       color: var(--text);
-      background: #f7fafc;
+
+      background:
+
+        linear-gradient(rgba(11, 34, 57, 0.025) 1px, transparent 1px),
+
+        linear-gradient(90deg, rgba(11, 34, 57, 0.025) 1px, transparent 1px),
+
+        #f7fafc;
+
+      background-size: 28px 28px;
+
       line-height: 1.65;
+
     }
  
     main {
+
       width: min(940px, 90%);
+
       margin: 0 auto;
+
       padding: 50px 0 75px;
+
     }
  
     .back {
+
       display: inline-block;
+
       margin-bottom: 22px;
+
       color: var(--blue);
+
       font-weight: 800;
+
       text-decoration: none;
+
+    }
+ 
+    .back:hover {
+
+      text-decoration: underline;
+
+    }
+ 
+    .eyebrow {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      margin-bottom: 14px;
+
+      padding: 7px 12px;
+
+      border: 1px solid #d8e9ef;
+
+      border-radius: 999px;
+
+      color: var(--blue);
+
+      background: white;
+
+      font-size: 0.78rem;
+
+      font-weight: 800;
+
+      letter-spacing: 0.08em;
+
+      text-transform: uppercase;
+
+    }
+ 
+    .status-dot {
+
+      width: 8px;
+
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: #3fb179;
+
+      box-shadow: 0 0 0 4px #dff5e9;
+
     }
  
     h1,
+
     h2 {
+
       color: var(--navy);
+
     }
  
     h1 {
+
       margin: 0 0 14px;
-      font-size: clamp(2.3rem, 6vw, 4.4rem);
+
+      font-size: clamp(2.3rem, 6vw, 4.3rem);
+
       line-height: 1.05;
+
+      letter-spacing: -0.045em;
+
     }
  
     .intro {
-      max-width: 760px;
+
+      max-width: 780px;
+
+      margin: 0;
+
       color: var(--muted);
+
       font-size: 1.08rem;
+
     }
  
     .impact {
-      margin: 25px 0;
-      padding: 20px;
-      border-radius: 16px;
+
+      display: grid;
+
+      grid-template-columns: auto 1fr;
+
+      gap: 18px;
+
+      align-items: center;
+
+      margin: 28px 0;
+
+      padding: 22px;
+
+      border-radius: 18px;
+
       color: white;
+
       background: linear-gradient(135deg, var(--navy), var(--blue));
+
+      box-shadow: 0 14px 30px rgba(11, 34, 57, 0.16);
+
     }
  
-    .impact strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 2.1rem;
+    .impact-number {
+
+      padding-right: 18px;
+
+      border-right: 1px solid rgba(255, 255, 255, 0.25);
+
+      font-size: clamp(1.7rem, 4vw, 2.45rem);
+
+      font-weight: 900;
+
+      line-height: 1;
+
+      white-space: nowrap;
+
+    }
+ 
+    .impact p {
+
+      margin: 0;
+
+      color: #dcedf4;
+
     }
  
     .panel {
+
       margin-top: 22px;
-      padding: 25px;
+
+      padding: 28px;
+
       border: 1px solid var(--border);
+
       border-radius: 18px;
-      background: white;
+
+      background: var(--white);
+
       box-shadow: 0 8px 22px rgba(11, 34, 57, 0.05);
+
     }
  
     .panel h2 {
-      margin-top: 0;
-      font-size: 1.35rem;
+
+      margin: 0 0 12px;
+
+      font-size: 1.4rem;
+
     }
  
-    .tag {
-      display: inline-block;
-      margin: 5px 5px 0 0;
-      padding: 6px 10px;
-      border-radius: 999px;
-      color: #24617a;
-      background: var(--light-blue);
-      font-size: 0.82rem;
-      font-weight: 800;
+    .panel p {
+
+      margin: 0;
+
+      color: var(--muted);
+
+    }
+ 
+    .workflow-image {
+
+      margin: 24px 0 0;
+
+    }
+ 
+    .workflow-image img {
+
+      display: block;
+
+      width: min(100%, 680px);
+
+      margin: 0 auto;
+
+      border: 1px solid var(--border);
+
+      border-radius: 16px;
+
+      background: white;
+
+      box-shadow: 0 12px 28px rgba(11, 34, 57, 0.1);
+
+    }
+ 
+    .workflow-image figcaption {
+
+      max-width: 680px;
+
+      margin: 12px auto 0;
+
+      color: var(--muted);
+
+      font-size: 0.88rem;
+
+      text-align: center;
+
     }
  
     ul {
+
+      margin: 0;
+
       padding-left: 22px;
+
+      color: #526976;
+
     }
  
     li {
-      margin-bottom: 10px;
+
+      margin-bottom: 12px;
+
+    }
+ 
+    li:last-child {
+
+      margin-bottom: 0;
+
+    }
+ 
+    li::marker {
+
+      color: var(--blue);
+
+    }
+ 
+    .tag {
+
+      display: inline-block;
+
+      margin: 5px 5px 0 0;
+
+      padding: 6px 10px;
+
+      border-radius: 999px;
+
+      color: #24617a;
+
+      background: var(--light-blue);
+
+      font-size: 0.82rem;
+
+      font-weight: 800;
+
+    }
+ 
+    .note {
+
+      border-left: 5px solid var(--gold);
+
+      background: #fff8e7;
+
+    }
+ 
+    .note p {
+
+      color: #695022;
+
+    }
+ 
+    @media (max-width: 650px) {
+
+      main {
+
+        width: min(94%, 940px);
+
+        padding-top: 34px;
+
+      }
+ 
+      .panel {
+
+        padding: 22px;
+
+      }
+ 
+      .impact {
+
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+
+      }
+ 
+      .impact-number {
+
+        padding: 0 0 10px;
+
+        border-right: 0;
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+
+      }
+
     }
 </style>
 </head>
@@ -112,61 +383,150 @@
 <main>
 <a class="back" href="../index.html">← Back to portfolio</a>
  
-    <h1>AI-Enabled Requisition Workflow Automation</h1>
- 
-    <p class="intro">
-      Co-developed an automation workflow that reduced repetitive
-      requisition-related processing by combining Python, Power Automate,
-      batch scripting, and AI-assisted validation.
-</p>
- 
-    <div class="impact">
-<strong>~75 minutes saved daily</strong>
-      Reduced repetitive manual processing while improving workflow consistency.
+    <div class="eyebrow">
+<span class="status-dot"></span>
+
+      Process Improvement Portfolio Project
 </div>
  
-    <section class="panel">
-<h2>Problem</h2>
+    <h1>AI-Enabled Requisition Alignment Automation</h1>
+ 
+    <p class="intro">
+
+      Co-developed an automation workflow that reduced repetitive
+
+      requisition-related processing by combining SAP process steps, Python,
+
+      scheduled execution, file-based workflow triggers, Power Automate, and
+
+      automated stakeholder notifications.
+</p>
+ 
+    <section class="impact">
+<div class="impact-number">~75 minutes<br>saved daily</div>
  
       <p>
-        The existing requisition process included repetitive manual steps that
-        required review, validation, and follow-up. The goal was to reduce
-        repetitive effort while improving consistency across the workflow.
+
+        The workflow reduced repetitive manual processing while improving
+
+        visibility, execution consistency, documentation, and communication
+
+        across the requisition-alignment process.
 </p>
+</section>
+ 
+    <section class="panel">
+<h2>Workflow Overview</h2>
+ 
+      <p>
+
+        The workflow connects a recurring SAP requisition-alignment process with
+
+        Python-based automation, scheduled execution, automatic documentation,
+
+        organized file storage, Power Automate triggers, and Teams notifications.
+</p>
+ 
+      <figure class="workflow-image">
+<img
+
+          src="../assets/image/requisition-alignment-workflow.png"
+
+          alt="SAP requisition alignment automation workflow from process challenge through automated notification">
+ 
+        <figcaption>
+
+          Public, confidentiality-safe workflow overview. Internal system details,
+
+          business rules, records, and proprietary data are not displayed.
+</figcaption>
+</figure>
 </section>
  
     <section class="panel">
 <h2>My Contribution</h2>
  
       <ul>
-<li>Co-developed the workflow logic for an AI-enabled requisition automation process.</li>
-<li>Used Python, Power Automate, batch scripting, and AI-assisted validation to connect and streamline process steps.</li>
-<li>Worked with stakeholders to map manual activities, clarify requirements, and validate workflow behavior.</li>
-<li>Helped improve consistency in processing and reduce repetitive work by approximately 75 minutes per day.</li>
-<li>Supported iterative refinement so the automation aligned with day-to-day operational needs.</li>
+<li>
+
+          Co-developed an AI-enabled requisition-alignment automation workflow
+
+          designed to reduce repetitive manual processing.
+</li>
+ 
+        <li>
+
+          Used Python, Power Automate, batch scripting, and AI-assisted validation
+
+          to connect and streamline recurring process steps.
+</li>
+ 
+        <li>
+
+          Helped map manual workflow activities, identify automation opportunities,
+
+          and validate requirements with operations stakeholders.
+</li>
+ 
+        <li>
+
+          Supported scheduled execution, automatic screenshot capture, organized
+
+          file storage, and notification logic to improve process visibility.
+</li>
+ 
+        <li>
+
+          Helped refine the workflow through stakeholder feedback, improving
+
+          consistency and reducing repetitive effort by approximately 75 minutes
+
+          per day.
+</li>
 </ul>
 </section>
  
     <section class="panel">
-<h2>Tools Used</h2>
+<h2>Business Value</h2>
  
-      <span class="tag">Python</span>
+      <ul>
+<li>Reduced repetitive manual effort in a recurring operational process.</li>
+<li>Improved process visibility through automated documentation and stored outputs.</li>
+<li>Supported more consistent execution of recurring alignment activities.</li>
+<li>Enabled faster stakeholder awareness through automated Teams notifications.</li>
+<li>Demonstrated how automation can strengthen operational efficiency and reliability.</li>
+</ul>
+</section>
+ 
+    <section class="panel">
+<h2>Tools & Technologies</h2>
+ 
+      <span class="tag">SAP</span>
+<span class="tag">Python</span>
 <span class="tag">Power Automate</span>
 <span class="tag">Batch Scripting</span>
 <span class="tag">AI-Assisted Validation</span>
+<span class="tag">Microsoft Teams</span>
 <span class="tag">Process Mapping</span>
 <span class="tag">Stakeholder Collaboration</span>
 <span class="tag">Process Improvement</span>
 </section>
  
-    <section class="panel">
+    <section class="panel note">
 <h2>Confidentiality Note</h2>
  
       <p>
-        This overview intentionally excludes internal workflow details, system
-        configurations, screenshots, business rules, and company-specific data.
+
+        This project description uses public, portfolio-safe language and does
+
+        not include internal workflow logic, system configurations, screenshots,
+
+        purchase information, supplier data, business rules, or company-specific
+
+        records.
 </p>
 </section>
 </main>
 </body>
 </html>
+ 
