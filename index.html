@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hossain Sowrob | Analytics Portfolio</title>
-<style>
+ 
+  <style>
     :root {
       --navy: #0b2239;
       --blue: #167d9d;
@@ -377,37 +378,6 @@
       text-decoration: underline;
     }
  
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
- 
-    .process-step {
-      padding: 22px;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: white;
-    }
- 
-    .process-step .number {
-      color: var(--blue);
-      font-weight: 900;
-      font-size: 1.4rem;
-    }
- 
-    .process-step h3 {
-      margin: 8px 0;
-      color: var(--navy);
-      font-size: 1.05rem;
-    }
- 
-    .process-step p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
- 
     .contact-box {
       padding: 36px;
       border-radius: 24px;
@@ -436,6 +406,180 @@
       font-size: 0.9rem;
     }
  
+    /* Experience layout */
+    .experience-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 32px;
+    }
+ 
+    .experience-heading h2 {
+      max-width: 680px;
+    }
+ 
+    .experience-heading > p {
+      max-width: 270px;
+      margin-bottom: 8px;
+    }
+ 
+    .experience-layout {
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+ 
+    .experience-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: rgba(239, 247, 250, 0.82);
+    }
+ 
+    .experience-tab {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px 12px;
+      text-align: left;
+      color: #55707f;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      background: transparent;
+      cursor: pointer;
+      font-family: inherit;
+    }
+ 
+    .experience-tab:hover,
+    .experience-tab.active {
+      color: var(--navy);
+      border-color: #84b5c7;
+      background: white;
+      box-shadow: 0 7px 18px rgba(11, 34, 57, 0.08);
+    }
+ 
+    .experience-number {
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+ 
+    .experience-tab strong,
+    .experience-tab small {
+      display: block;
+    }
+ 
+    .experience-tab strong {
+      font-size: 0.93rem;
+    }
+ 
+    .experience-tab small {
+      margin-top: 3px;
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+ 
+    .experience-detail {
+      min-height: 490px;
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: white;
+      box-shadow: 0 14px 35px rgba(11, 34, 57, 0.08);
+    }
+ 
+    .role-panel {
+      display: none;
+    }
+ 
+    .role-panel.active {
+      display: block;
+    }
+ 
+    .role-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .company-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+ 
+    .company-brand img,
+    .logo-fallback {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      padding: 7px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #f9fcfd;
+    }
+ 
+    .logo-fallback {
+      display: none;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      font-size: 1.2rem;
+      font-weight: 900;
+    }
+ 
+    .company-name {
+      margin: 0 0 4px;
+      color: var(--blue);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+ 
+    .role-topline h3 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(1.35rem, 2.3vw, 2rem);
+      line-height: 1.15;
+    }
+ 
+    .date-pill {
+      flex: none;
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: #3b6f7d;
+      background: #eaf5f8;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+ 
+    .role-summary {
+      margin: 22px 0;
+      color: #4c6574;
+      font-size: 1.03rem;
+    }
+ 
+    .role-list {
+      padding-left: 21px;
+      color: #526976;
+    }
+ 
+    .role-list li {
+      margin-bottom: 12px;
+      padding-left: 4px;
+    }
+ 
+    .role-list li::marker {
+      color: var(--blue);
+    }
+ 
     @media (max-width: 860px) {
       .navbar {
         align-items: flex-start;
@@ -457,9 +601,40 @@
         min-height: 410px;
       }
  
-      .card-grid,
-      .process-grid {
+      .card-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+    }
+ 
+    @media (max-width: 760px) {
+      .experience-heading {
+        display: block;
+      }
+ 
+      .experience-heading > p {
+        max-width: none;
+      }
+ 
+      .experience-layout {
+        grid-template-columns: 1fr;
+      }
+ 
+      .experience-menu {
+        flex-direction: row;
+        overflow-x: auto;
+      }
+ 
+      .experience-tab {
+        flex: 0 0 210px;
+      }
+ 
+      .experience-detail {
+        min-height: auto;
+        padding: 22px;
+      }
+ 
+      .role-topline {
+        flex-direction: column;
       }
     }
  
@@ -492,8 +667,7 @@
         left: 0;
       }
  
-      .card-grid,
-      .process-grid {
+      .card-grid {
         grid-template-columns: 1fr;
       }
  
@@ -501,210 +675,6 @@
         padding: 26px;
       }
     }
-    .experience-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 32px;
-}
- 
-.experience-heading h2 {
-  max-width: 680px;
-}
- 
-.experience-heading > p {
-  max-width: 270px;
-  margin-bottom: 8px;
-}
- 
-.experience-layout {
-  display: grid;
-  grid-template-columns: 270px 1fr;
-  gap: 22px;
-  align-items: stretch;
-}
- 
-.experience-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 14px;
-  border-radius: 20px;
-  background: rgba(239, 247, 250, 0.82);
-  border: 1px solid var(--border);
-}
- 
-.experience-tab {
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 16px 12px;
-  text-align: left;
-  color: #55707f;
-  border: 1px solid transparent;
-  border-radius: 14px;
-  background: transparent;
-  cursor: pointer;
-  font-family: inherit;
-}
- 
-.experience-tab:hover,
-.experience-tab.active {
-  color: var(--navy);
-  border-color: #84b5c7;
-  background: white;
-  box-shadow: 0 7px 18px rgba(11, 34, 57, 0.08);
-}
- 
-.experience-number {
-  color: var(--blue);
-  font-size: 0.78rem;
-  font-weight: 900;
-}
- 
-.experience-tab strong,
-.experience-tab small {
-  display: block;
-}
- 
-.experience-tab strong {
-  font-size: 0.93rem;
-}
- 
-.experience-tab small {
-  margin-top: 3px;
-  font-size: 0.78rem;
-  line-height: 1.35;
-}
- 
-.experience-detail {
-  min-height: 490px;
-  padding: 32px;
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  background: white;
-  box-shadow: 0 14px 35px rgba(11, 34, 57, 0.08);
-}
- 
-.role-panel {
-  display: none;
-}
- 
-.role-panel.active {
-  display: block;
-}
- 
-.role-topline {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  padding-bottom: 22px;
-  border-bottom: 1px solid var(--border);
-}
- 
-.company-brand {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
- 
-.company-brand img,
-.logo-fallback {
-  width: 52px;
-  height: 52px;
-  object-fit: contain;
-  padding: 7px;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: #f9fcfd;
-}
- 
-.logo-fallback {
-  display: none;
-  place-items: center;
-  color: white;
-  background: linear-gradient(135deg, var(--navy), var(--blue));
-  font-size: 1.2rem;
-  font-weight: 900;
-}
- 
-.company-name {
-  margin: 0 0 4px;
-  color: var(--blue);
-  font-size: 0.82rem;
-  font-weight: 800;
-}
- 
-.role-topline h3 {
-  margin: 0;
-  color: var(--navy);
-  font-size: clamp(1.35rem, 2.3vw, 2rem);
-  line-height: 1.15;
-}
- 
-.date-pill {
-  flex: none;
-  padding: 7px 11px;
-  border-radius: 999px;
-  color: #3b6f7d;
-  background: #eaf5f8;
-  font-size: 0.78rem;
-  font-weight: 800;
-}
- 
-.role-summary {
-  margin: 22px 0;
-  color: #4c6574;
-  font-size: 1.03rem;
-}
- 
-.role-list {
-  padding-left: 21px;
-  color: #526976;
-}
- 
-.role-list li {
-  margin-bottom: 12px;
-  padding-left: 4px;
-}
- 
-.role-list li::marker {
-  color: var(--blue);
-}
- 
-@media (max-width: 760px) {
-  .experience-heading {
-    display: block;
-  }
- 
-  .experience-heading > p {
-    max-width: none;
-  }
- 
-  .experience-layout {
-    grid-template-columns: 1fr;
-  }
- 
-  .experience-menu {
-    flex-direction: row;
-    overflow-x: auto;
-  }
- 
-  .experience-tab {
-    flex: 0 0 210px;
-  }
- 
-  .experience-detail {
-    min-height: auto;
-    padding: 22px;
-  }
- 
-  .role-topline {
-    flex-direction: column;
-  }
-}
 </style>
 </head>
  
@@ -736,9 +706,9 @@
         <h2>Building dashboards and automation that turn operational data into clear decisions.</h2>
  
         <p>
-          I am a Business Analytics student at Western Michigan University
-          focused on Power BI, process automation, and supply-chain analytics.
-          I enjoy turning complex data into practical tools people can use.
+          I am a Business Analytics student at Western Michigan University focused on Power BI,
+          process automation, and supply-chain analytics. I enjoy turning complex data into
+          practical tools people can use.
 </p>
  
         <div class="button-row">
@@ -759,7 +729,9 @@
 <div class="photo-shadow"></div>
  
         <div class="photo-frame">
-<img src="assets/images/hossain-headshot.jpg" alt="Professional headshot of Hossain Sowrob">
+<img
+            src="assets/image/B1E21BF8-6762-46E1-87AC-75FD920ED964_Original.jpeg"
+            alt="Professional headshot of Hossain Sowrob">
 </div>
  
         <div class="photo-note">
@@ -786,21 +758,22 @@
 </div>
 </section>
  
-<section id="experience">
+    <section id="experience">
 <div class="section-heading experience-heading">
 <div>
 <div class="eyebrow">
 <span class="status-dot"></span>
-        Professional Journey
+            Professional Journey
 </div>
 <h2>Experience across analytics, operations, and service.</h2>
 </div>
-<p>
-      Select a role to explore the responsibilities, tools, and skills I developed.
+ 
+        <p>
+          Select a role to explore responsibilities, contributions, and skills developed.
 </p>
 </div>
  
-  <div class="experience-layout">
+      <div class="experience-layout">
 <aside class="experience-menu">
 <button class="experience-tab active" data-role="flowserve">
 <span class="experience-number">01</span>
@@ -810,7 +783,7 @@
 </span>
 </button>
  
-      <button class="experience-tab" data-role="rocket">
+          <button class="experience-tab" data-role="rocket">
 <span class="experience-number">02</span>
 <span>
 <strong>Rocket Mortgage</strong>
@@ -818,7 +791,7 @@
 </span>
 </button>
  
-      <button class="experience-tab" data-role="wmu">
+          <button class="experience-tab" data-role="wmu">
 <span class="experience-number">03</span>
 <span>
 <strong>WMU Student Center</strong>
@@ -827,37 +800,40 @@
 </button>
 </aside>
  
-    <div class="experience-detail">
-<!-- Flowserve -->
+        <div class="experience-detail">
 <article class="role-panel active" id="flowserve">
 <div class="role-topline">
 <div class="company-brand">
-<img src="assets/images/logos/flowserve-logo.jpeg" alt="Flowserve logo"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+<img
+                  src="assets/image/flowserve-logo.jpeg"
+                  alt="Flowserve logo"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
 <span class="logo-fallback">F</span>
-<div>
+ 
+                <div>
 <p class="company-name">Flowserve Corporation · Kalamazoo, Michigan</p>
 <h3>Supply Chain Intern</h3>
 </div>
 </div>
-<span class="date-pill">August 2026 – Present</span>
+ 
+              <span class="date-pill">August 2026 – Present</span>
 </div>
  
-        <p class="role-summary">
-          Supporting procurement and supply-chain operations through analytics,
-          reporting, automation, purchase-order support, and process improvement.
+            <p class="role-summary">
+              Supporting procurement and supply-chain operations through analytics,
+              reporting, automation, purchase-order support, and process improvement.
 </p>
  
-        <ul class="role-list">
-<li>Develop interactive Power BI dashboards that convert operational data into high-level performance summaries, trend views, and guided detail analysis.</li>
+            <ul class="role-list">
+<li>Develop interactive Power BI dashboards that turn complex operational information into performance summaries, trends, and guided detail analysis.</li>
 <li>Designed dashboard navigation so users can move from a summary metric to detailed records, investigate priorities, and return to the original report view.</li>
-<li>Co-developed an AI-enabled requisition workflow using Python, Power Automate, batch scripting, and AI-assisted validation, reducing repetitive work.</li>
-<li>Enhanced an Excel VBA reporting tool to organize purchasing exceptions, filter output across buyer and plant dimensions, and support structured follow-up.</li>
+<li>Co-developed an AI-enabled requisition workflow using Python, Power Automate, batch scripting, and AI-assisted validation.</li>
+<li>Enhanced an Excel VBA reporting tool to organize exception data, filter output across user-selected dimensions, and support structured follow-up.</li>
 <li>Support purchasing operations through purchase-order creation, SAP and Excel analysis, and coordination with internal stakeholders.</li>
-<li>Contribute to process-improvement work by identifying manual steps that can be standardized, automated, or made easier to review.</li>
+<li>Contribute to process-improvement efforts by identifying repeatable manual work that can be standardized or automated.</li>
 </ul>
  
-        <div class="tags">
+            <div class="tags">
 <span class="tag">Power BI</span>
 <span class="tag">Power Query</span>
 <span class="tag">DAX</span>
@@ -869,34 +845,36 @@
 </div>
 </article>
  
-      <!-- Rocket Mortgage -->
-<article class="role-panel" id="rocket">
+          <article class="role-panel" id="rocket">
 <div class="role-topline">
 <div class="company-brand">
-<img src="assets/images/logos/rocket-logo.png" alt="Rocket Mortgage logo"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+<img
+                  src="assets/image/rocket-logo.png"
+                  alt="Rocket Mortgage logo"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
 <span class="logo-fallback">R</span>
-<div>
+ 
+                <div>
 <p class="company-name">Rocket Mortgage</p>
 <h3>Externship Participant</h3>
 </div>
 </div>
-<span class="date-pill">Add dates here</span>
+ 
+              <span class="date-pill">Externship</span>
 </div>
  
-        <p class="role-summary">
-          Use this section for your Rocket Mortgage externship experience. Replace
-          the bullets below with your exact responsibilities, project, program name,
-          dates, and any public-safe outcome.
+            <p class="role-summary">
+              Participated in a professional externship focused on business operations,
+              financial services, career development, and cross-functional collaboration.
 </p>
  
-        <ul class="role-list">
-<li>Participated in professional development and career exploration activities focused on financial services and business operations.</li>
-<li>Learned from industry professionals about customer experience, technology, analytics, and cross-functional collaboration.</li>
-<li>Strengthened communication, problem-solving, and business analysis skills through structured externship activities.</li>
+            <ul class="role-list">
+<li>Participated in career exploration and professional development activities in a financial-services environment.</li>
+<li>Learned from industry professionals about customer experience, technology, operations, and teamwork.</li>
+<li>Strengthened communication, business analysis, and problem-solving skills through externship activities.</li>
 </ul>
  
-        <div class="tags">
+            <div class="tags">
 <span class="tag">Business Operations</span>
 <span class="tag">Professional Development</span>
 <span class="tag">Financial Services</span>
@@ -904,34 +882,37 @@
 </div>
 </article>
  
-      <!-- WMU -->
-<article class="role-panel" id="wmu">
+          <article class="role-panel" id="wmu">
 <div class="role-topline">
 <div class="company-brand">
-<img src="assets/images/logos/wmu-logo.jpeg" alt="Western Michigan University logo"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+<img
+                  src="assets/image/wmu-logo.jpeg"
+                  alt="Western Michigan University logo"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
 <span class="logo-fallback">W</span>
-<div>
+ 
+                <div>
 <p class="company-name">Western Michigan University · Kalamazoo, Michigan</p>
 <h3>Administrative Office Assistant & Information Center Associate</h3>
 </div>
 </div>
-<span class="date-pill">October 2025 – May 2026</span>
+ 
+              <span class="date-pill">October 2025 – May 2026</span>
 </div>
  
-        <p class="role-summary">
-          Supported high-volume office and information-center operations while
-          maintaining accurate records and coordinating campus communication.
+            <p class="role-summary">
+              Supported high-volume office and information-center operations while
+              maintaining accurate records and coordinating campus communication.
 </p>
  
-        <ul class="role-list">
+            <ul class="role-list">
 <li>Managed confidential databases for more than 500 students using validation and quality-control practices to maintain accurate information.</li>
 <li>Analyzed operational logs and visitor inquiry patterns to identify opportunities to improve workflow efficiency.</li>
 <li>Coordinated logistics and cross-department communication for more than 40 weekly campus events.</li>
 <li>Provided front-line information support and helped maintain organized, responsive office operations.</li>
 </ul>
  
-        <div class="tags">
+            <div class="tags">
 <span class="tag">Operations Support</span>
 <span class="tag">Data Quality</span>
 <span class="tag">Event Coordination</span>
@@ -942,7 +923,7 @@
 </div>
 </div>
 </section>
-has context menu
+ 
     <section id="projects">
 <div class="section-heading">
 <h2>Selected Work</h2>
@@ -980,7 +961,7 @@ has context menu
 <span class="tag">Data Visualization</span>
 </div>
  
-           <a class="project-link" href="projects/powerbi-dashboard.html">View Dashboard →</a>
+            <a class="project-link" href="projects/powerbi-dashboard.html">View Dashboard →</a>
 </div>
 </article>
  
@@ -1011,7 +992,7 @@ has context menu
 <span class="tag">AI Tools</span>
 </div>
  
-            <a class="project-link" href="requisition-automation.html">View Dashboard →</a>
+            <a class="project-link" href="projects/requisition-automation.html">View Project →</a>
 </div>
 </article>
  
@@ -1041,7 +1022,7 @@ has context menu
 <span class="tag">Process Improvement</span>
 </div>
  
-            <a class="project-link" href="vba-automation.html">View Dashboard →</a>
+            <a class="project-link" href="projects/vba-automation.html">View Project →</a>
 </div>
 </article>
 </div>
@@ -1050,7 +1031,10 @@ has context menu
     <section>
 <div class="section-heading">
 <h2>Academic Projects</h2>
-<p>Projects built with public or academic datasets that can be described in more technical detail.</p>
+<p>
+          Projects built with public or academic datasets that can be described
+          in more technical detail.
+</p>
 </div>
  
       <div class="card-grid">
@@ -1058,10 +1042,15 @@ has context menu
 <div class="project-visual">
 <strong>FORECASTING</strong>
 </div>
-<div class="project-content">
+ 
+          <div class="project-content">
 <h3>Walmart Weekly Sales Forecast</h3>
-<p>Built a demand forecasting model and Power BI dashboard to support inventory planning and staffing decisions.</p>
-<div class="tags">
+<p>
+              Built a demand forecasting model and Power BI dashboard to support
+              inventory planning and staffing decisions.
+</p>
+ 
+            <div class="tags">
 <span class="tag">Python</span>
 <span class="tag">Prophet</span>
 <span class="tag">Power BI</span>
@@ -1073,10 +1062,15 @@ has context menu
 <div class="project-visual green">
 <strong>DATA ANALYSIS</strong>
 </div>
-<div class="project-content">
+ 
+          <div class="project-content">
 <h3>Supply Chain Data Analysis</h3>
-<p>Analyzed a large supply-chain dataset using Python, hypothesis testing, and visualization to identify delivery patterns.</p>
-<div class="tags">
+<p>
+              Analyzed a large supply-chain dataset using Python, hypothesis testing,
+              and visualization to identify delivery patterns.
+</p>
+ 
+            <div class="tags">
 <span class="tag">Python</span>
 <span class="tag">Statistics</span>
 <span class="tag">Visualization</span>
@@ -1088,10 +1082,15 @@ has context menu
 <div class="project-visual gold">
 <strong>BUSINESS STRATEGY</strong>
 </div>
-<div class="project-content">
+ 
+          <div class="project-content">
 <h3>Community Bank Case Competition</h3>
-<p>Analyzed financial performance and delivered executive recommendations as part of a nationally recognized student team.</p>
-<div class="tags">
+<p>
+              Analyzed financial performance and delivered executive recommendations
+              as part of a nationally recognized student team.
+</p>
+ 
+            <div class="tags">
 <span class="tag">Financial Analysis</span>
 <span class="tag">PowerPoint</span>
 <span class="tag">Strategy</span>
@@ -1110,9 +1109,9 @@ has context menu
 </p>
  
         <div class="button-row">
-<a class="button button-secondary" href="mailto:Sowrobh2003@gmail.com">Email Me</a>
-<a class="button button-secondary" href="https://github.com/hossainsowrob" target="_blank">GitHub</a>
-<a class="button button-secondary" href="assets/resume.pdf" target="_blank">View Résumé</a>
+<a class="button button-primary" href="mailto:Sowrobh2003@gmail.com">Email Me</a>
+<a class="button button-primary" href="https://github.com/hossainsowrob" target="_blank">GitHub</a>
+<a class="button button-primary" href="assets/resume.pdf" target="_blank">View Résumé</a>
 </div>
 </div>
 </section>
@@ -1121,21 +1120,22 @@ has context menu
   <footer>
     © 2026 Hossain Sowrob · Built with GitHub Pages
 </footer>
-    <script>
-  const experienceTabs = document.querySelectorAll(".experience-tab");
-  const rolePanels = document.querySelectorAll(".role-panel");
  
-  experienceTabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      const selectedRole = tab.dataset.role;
+  <script>
+    const experienceTabs = document.querySelectorAll(".experience-tab");
+    const rolePanels = document.querySelectorAll(".role-panel");
  
-      experienceTabs.forEach((item) => item.classList.remove("active"));
-      rolePanels.forEach((panel) => panel.classList.remove("active"));
+    experienceTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const selectedRole = tab.dataset.role;
  
-      tab.classList.add("active");
-      document.getElementById(selectedRole).classList.add("active");
+        experienceTabs.forEach((item) => item.classList.remove("active"));
+        rolePanels.forEach((panel) => panel.classList.remove("active"));
+ 
+        tab.classList.add("active");
+        document.getElementById(selectedRole).classList.add("active");
+      });
     });
-  });
 </script>
 </body>
 </html>
