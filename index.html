@@ -1,9 +1,10 @@
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hossain Sowrob | Analytics Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hossain Sowrob | Analytics Portfolio</title>
  
   <style>
     :root {
@@ -13,8 +14,11 @@
       --gold: #e9a93e;
       --text: #243444;
       --muted: #667785;
-      --white: #ffffff;
       --border: #dce7ed;
+      --white: #ffffff;
+      --surface: #ffffff;
+      --surface-soft: #f7fafc;
+      --shadow: rgba(11, 34, 57, 0.1);
     }
  
     * {
@@ -29,12 +33,33 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
+      line-height: 1.6;
       background:
         linear-gradient(rgba(11, 34, 57, 0.035) 1px, transparent 1px),
         linear-gradient(90deg, rgba(11, 34, 57, 0.035) 1px, transparent 1px),
         #fbfdfe;
       background-size: 28px 28px;
-      line-height: 1.6;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+ 
+    body.dark-mode {
+      --navy: #e8f4f8;
+      --blue: #63c4df;
+      --light-blue: #18394b;
+      --gold: #f0bd60;
+      --text: #dbe9ee;
+      --muted: #abc0ca;
+      --border: #315364;
+      --white: #102b38;
+      --surface: #102b38;
+      --surface-soft: #143645;
+      --shadow: rgba(0, 0, 0, 0.22);
+ 
+      background:
+        linear-gradient(rgba(149, 209, 225, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(149, 209, 225, 0.04) 1px, transparent 1px),
+        #081a24;
+      background-size: 28px 28px;
     }
  
     .container {
@@ -46,18 +71,24 @@
       position: sticky;
       top: 16px;
       z-index: 20;
-      width: min(980px, 92%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      width: min(1020px, 92%);
       margin: 16px auto 0;
       padding: 12px 18px;
       border: 1px solid rgba(220, 231, 237, 0.9);
       border-radius: 18px;
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(10px);
-      box-shadow: 0 10px 28px rgba(11, 34, 57, 0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
+      box-shadow: 0 10px 28px var(--shadow);
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+ 
+    body.dark-mode .navbar {
+      border-color: var(--border);
+      background: rgba(16, 43, 56, 0.94);
     }
  
     .brand {
@@ -71,13 +102,19 @@
  
     .brand-mark {
       display: grid;
-      place-items: center;
       width: 38px;
       height: 38px;
+      place-items: center;
       border-radius: 12px;
       color: white;
-      background: linear-gradient(135deg, var(--navy), var(--blue));
+      background: linear-gradient(135deg, #0b2239, #167d9d);
       font-size: 0.85rem;
+    }
+ 
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
  
     .nav-links {
@@ -88,7 +125,7 @@
     }
  
     .nav-links a {
-      color: #536675;
+      color: var(--muted);
       font-size: 0.92rem;
       font-weight: 700;
       text-decoration: none;
@@ -98,11 +135,35 @@
       color: var(--blue);
     }
  
+    .theme-toggle {
+      flex: none;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--navy);
+      background: var(--surface);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 800;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+ 
+    .theme-toggle:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      transform: translateY(-1px);
+    }
+ 
+    section {
+      padding: 78px 0;
+    }
+ 
     .hero {
-      min-height: 670px;
       display: grid;
       grid-template-columns: 1.12fr 0.88fr;
       gap: 56px;
+      min-height: 670px;
       align-items: center;
       padding: 72px 0 64px;
     }
@@ -115,12 +176,16 @@
       padding: 7px 12px;
       border: 1px solid #d8e9ef;
       border-radius: 999px;
-      background: white;
       color: var(--blue);
+      background: var(--surface);
       font-size: 0.78rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+    }
+ 
+    body.dark-mode .eyebrow {
+      border-color: var(--border);
     }
  
     .status-dot {
@@ -146,7 +211,7 @@
     .hero h2 {
       max-width: 640px;
       margin: 24px 0 14px;
-      color: #21445f;
+      color: var(--navy);
       font-size: clamp(1.25rem, 2.5vw, 1.75rem);
       line-height: 1.3;
     }
@@ -166,9 +231,9 @@
  
     .button {
       display: inline-flex;
+      min-height: 48px;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
       padding: 12px 18px;
       border-radius: 12px;
       font-weight: 800;
@@ -181,15 +246,15 @@
     }
  
     .button-primary {
-      color: white;
-      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: white !important;
+      background: linear-gradient(135deg, #0b2239, #167d9d);
       box-shadow: 0 12px 24px rgba(22, 125, 157, 0.22);
     }
  
     .button-secondary {
-      color: var(--navy);
       border: 1px solid var(--border);
-      background: white;
+      color: var(--navy);
+      background: var(--surface);
     }
  
     .quick-links {
@@ -206,8 +271,8 @@
     .photo-area {
       position: relative;
       display: grid;
-      place-items: center;
       min-height: 470px;
+      place-items: center;
     }
  
     .photo-shadow {
@@ -219,6 +284,10 @@
       transform: rotate(9deg);
     }
  
+    body.dark-mode .photo-shadow {
+      background: linear-gradient(135deg, #1c5a70, #745d35);
+    }
+ 
     .photo-frame {
       position: relative;
       z-index: 2;
@@ -226,29 +295,34 @@
       padding: 12px;
       border: 11px solid rgba(255, 255, 255, 0.88);
       border-radius: 34px;
-      background: white;
-      box-shadow: 0 22px 50px rgba(11, 34, 57, 0.2);
+      background: var(--surface);
+      box-shadow: 0 22px 50px var(--shadow);
+    }
+ 
+    body.dark-mode .photo-frame {
+      border-color: rgba(49, 83, 100, 0.9);
     }
  
     .photo-frame img {
       display: block;
       width: 100%;
       aspect-ratio: 4 / 5;
-      object-fit: cover;
       border-radius: 20px;
       background: #dfe8ec;
+      object-fit: cover;
     }
  
     .photo-note {
       position: absolute;
       z-index: 3;
-      right: -12px;
       top: 72px;
-      max-width: 178px;
+      right: -12px;
+      max-width: 205px;
       padding: 14px 16px;
       border-radius: 14px;
-      background: white;
-      box-shadow: 0 12px 30px rgba(11, 34, 57, 0.14);
+      color: var(--text);
+      background: var(--surface);
+      box-shadow: 0 12px 30px var(--shadow);
       font-size: 0.82rem;
     }
  
@@ -259,18 +333,14 @@
     }
  
     .photo-note-bottom {
-      right: auto;
-      left: -28px;
       top: auto;
+      right: auto;
       bottom: 58px;
-    }
- 
-    section {
-      padding: 78px 0;
+      left: -28px;
     }
  
     .section-heading {
-      max-width: 720px;
+      max-width: 760px;
       margin-bottom: 32px;
     }
  
@@ -286,136 +356,13 @@
       color: var(--muted);
     }
  
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
+    /* Experience */
  
-    .project-card {
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      min-height: 390px;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background: white;
-      box-shadow: 0 12px 28px rgba(11, 34, 57, 0.06);
-    }
- 
-    .project-visual {
-      min-height: 145px;
-      padding: 22px;
-      color: white;
-      background: linear-gradient(135deg, #0b2239, #167d9d);
-    }
- 
-    .project-visual.gold {
-      background: linear-gradient(135deg, #66451c, #e9a93e);
-    }
- 
-    .project-visual.green {
-      background: linear-gradient(135deg, #164c4e, #46a38e);
-    }
- 
-    .mini-chart {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      align-items: end;
-      height: 72px;
-      gap: 8px;
-      margin-top: 18px;
-    }
- 
-    .mini-chart span {
-      display: block;
-      border-radius: 5px 5px 0 0;
-      background: rgba(255, 255, 255, 0.78);
-    }
- 
-    .project-content {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      padding: 22px;
-    }
- 
-    .project-content h3 {
-      margin: 0 0 10px;
-      color: var(--navy);
-      font-size: 1.22rem;
-    }
- 
-    .project-content p {
-      margin: 0 0 16px;
-      color: var(--muted);
-    }
- 
-    .tags {
-      margin-top: auto;
-    }
- 
-    .tag {
-      display: inline-block;
-      margin: 4px 4px 0 0;
-      padding: 5px 9px;
-      border-radius: 999px;
-      background: var(--light-blue);
-      color: #24617a;
-      font-size: 0.76rem;
-      font-weight: 700;
-    }
- 
-    .project-link {
-      display: inline-block;
-      margin-top: 18px;
-      color: var(--blue);
-      font-weight: 800;
-      text-decoration: none;
-    }
- 
-    .project-link:hover {
-      text-decoration: underline;
-    }
- 
-    .contact-box {
-      padding: 36px;
-      border-radius: 24px;
-      color: white;
-      background: linear-gradient(135deg, var(--navy), #145f79);
-    }
- 
-    .contact-box h2 {
-      margin-top: 0;
-      font-size: 2rem;
-    }
- 
-    .contact-box p {
-      max-width: 650px;
-      color: #dceff6;
-    }
- 
-    .contact-box a {
-      color: white;
-    }
- 
-    footer {
-      padding: 30px 20px;
-      color: #6e7e8a;
-      text-align: center;
-      font-size: 0.9rem;
-    }
- 
-    /* Experience layout */
     .experience-heading {
       display: flex;
       justify-content: space-between;
       align-items: end;
       gap: 32px;
-    }
- 
-    .experience-heading h2 {
-      max-width: 680px;
     }
  
     .experience-heading > p {
@@ -427,7 +374,6 @@
       display: grid;
       grid-template-columns: 270px 1fr;
       gap: 22px;
-      align-items: stretch;
     }
  
     .experience-menu {
@@ -437,30 +383,34 @@
       padding: 14px;
       border: 1px solid var(--border);
       border-radius: 20px;
-      background: rgba(239, 247, 250, 0.82);
+      background: var(--surface-soft);
     }
  
     .experience-tab {
-      width: 100%;
       display: flex;
-      align-items: flex-start;
+      width: 100%;
       gap: 12px;
       padding: 16px 12px;
-      text-align: left;
-      color: #55707f;
       border: 1px solid transparent;
       border-radius: 14px;
+      color: var(--muted);
       background: transparent;
       cursor: pointer;
       font-family: inherit;
+      text-align: left;
     }
  
     .experience-tab:hover,
     .experience-tab.active {
-      color: var(--navy);
       border-color: #84b5c7;
-      background: white;
-      box-shadow: 0 7px 18px rgba(11, 34, 57, 0.08);
+      color: var(--navy);
+      background: var(--surface);
+      box-shadow: 0 7px 18px var(--shadow);
+    }
+ 
+    body.dark-mode .experience-tab:hover,
+    body.dark-mode .experience-tab.active {
+      border-color: var(--border);
     }
  
     .experience-number {
@@ -489,8 +439,8 @@
       padding: 32px;
       border: 1px solid var(--border);
       border-radius: 22px;
-      background: white;
-      box-shadow: 0 14px 35px rgba(11, 34, 57, 0.08);
+      background: var(--surface);
+      box-shadow: 0 14px 35px var(--shadow);
     }
  
     .role-panel {
@@ -504,8 +454,8 @@
     .role-topline {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
       gap: 20px;
+      align-items: flex-start;
       padding-bottom: 22px;
       border-bottom: 1px solid var(--border);
     }
@@ -520,18 +470,18 @@
     .logo-fallback {
       width: 52px;
       height: 52px;
-      object-fit: contain;
       padding: 7px;
       border: 1px solid var(--border);
       border-radius: 14px;
-      background: #f9fcfd;
+      background: var(--surface-soft);
+      object-fit: contain;
     }
  
     .logo-fallback {
       display: none;
       place-items: center;
       color: white;
-      background: linear-gradient(135deg, var(--navy), var(--blue));
+      background: linear-gradient(135deg, #0b2239, #167d9d);
       font-size: 1.2rem;
       font-weight: 900;
     }
@@ -554,21 +504,38 @@
       flex: none;
       padding: 7px 11px;
       border-radius: 999px;
-      color: #3b6f7d;
-      background: #eaf5f8;
+      color: var(--blue);
+      background: var(--light-blue);
       font-size: 0.78rem;
       font-weight: 800;
     }
  
+    .role-details {
+      margin: 22px 0;
+    }
+ 
+    .role-details p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+ 
+    .role-details p:last-child {
+      margin-bottom: 0;
+    }
+ 
+    .role-details strong {
+      color: var(--navy);
+    }
+ 
     .role-summary {
       margin: 22px 0;
-      color: #4c6574;
+      color: var(--muted);
       font-size: 1.03rem;
     }
  
     .role-list {
       padding-left: 21px;
-      color: #526976;
+      color: var(--muted);
     }
  
     .role-list li {
@@ -580,16 +547,191 @@
       color: var(--blue);
     }
  
-    @media (max-width: 860px) {
+    /* Projects */
+ 
+    .projects-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 54px 0 24px;
+    }
+ 
+    .projects-divider::before,
+    .projects-divider::after {
+      height: 1px;
+      flex: 1;
+      background: var(--border);
+      content: "";
+    }
+ 
+    .projects-divider span {
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+ 
+    .projects-subtitle {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: clamp(1.45rem, 2.8vw, 2rem);
+    }
+ 
+    .projects-subtext {
+      max-width: 760px;
+      margin: 0 0 24px;
+      color: var(--muted);
+    }
+ 
+    .portfolio-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+ 
+    .portfolio-project {
+      display: grid;
+      grid-template-columns: 90px 1fr 70px;
+      gap: 22px;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--surface);
+      box-shadow: 0 10px 26px var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+ 
+    .portfolio-project:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 34px var(--shadow);
+    }
+ 
+    .project-number {
+      color: var(--blue);
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+ 
+    .project-main h3 {
+      margin: 5px 0 12px;
+      color: var(--navy);
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
+      line-height: 1.2;
+    }
+ 
+    .project-main > p:not(.project-type) {
+      max-width: 760px;
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+ 
+    .project-type {
+      margin: 0;
+      color: var(--blue);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+ 
+    .project-year {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-align: right;
+    }
+ 
+    .project-logo-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+ 
+    .project-logo-row img {
+      width: 42px;
+      height: 42px;
+      padding: 5px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      object-fit: contain;
+    }
+ 
+    .tags {
+      margin-top: 16px;
+    }
+ 
+    .tag {
+      display: inline-block;
+      margin: 4px 4px 0 0;
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: #24617a;
+      background: var(--light-blue);
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+ 
+    body.dark-mode .tag {
+      color: #bfeaf5;
+    }
+ 
+    .project-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--blue);
+      font-weight: 800;
+      text-decoration: none;
+    }
+ 
+    .project-link:hover {
+      text-decoration: underline;
+    }
+ 
+    /* Contact */
+ 
+    .contact-box {
+      padding: 36px;
+      border-radius: 24px;
+      color: white;
+      background: linear-gradient(135deg, #0b2239, #145f79);
+    }
+ 
+    .contact-box h2 {
+      margin-top: 0;
+      font-size: 2rem;
+    }
+ 
+    .contact-box p {
+      max-width: 650px;
+      color: #dceff6;
+    }
+ 
+    footer {
+      padding: 30px 20px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+ 
+    @media (max-width: 900px) {
       .navbar {
         align-items: flex-start;
         flex-direction: column;
       }
  
+      .nav-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+ 
       .nav-links {
         justify-content: flex-start;
       }
+    }
  
+    @media (max-width: 860px) {
       .hero {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -599,10 +741,6 @@
       .photo-area {
         order: -1;
         min-height: 410px;
-      }
- 
-      .card-grid {
-        grid-template-columns: repeat(2, 1fr);
       }
     }
  
@@ -638,9 +776,26 @@
       }
     }
  
+    @media (max-width: 650px) {
+      .portfolio-project {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 22px;
+      }
+ 
+      .project-year {
+        text-align: left;
+      }
+    }
+ 
     @media (max-width: 560px) {
       .navbar {
         top: 8px;
+      }
+ 
+      .nav-actions {
+        align-items: flex-start;
+        flex-direction: column;
       }
  
       .nav-links {
@@ -649,10 +804,6 @@
  
       .nav-links a {
         font-size: 0.8rem;
-      }
- 
-      .hero {
-        min-height: auto;
       }
  
       h1 {
@@ -667,463 +818,653 @@
         left: 0;
       }
  
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
- 
       .contact-box {
         padding: 26px;
       }
     }
-</style>
+  </style>
 </head>
  
 <body>
-<nav class="navbar">
-<a class="brand" href="#home">
-<span class="brand-mark">HS</span>
-<span>Hossain Sowrob</span>
-</a>
+  <nav class="navbar">
+    <a class="brand" href="#home">
+      <span class="brand-mark">HS</span>
+      <span>Hossain Sowrob</span>
+    </a>
  
-    <div class="nav-links">
-<a href="#about">About</a>
-<a href="#experience">Experience</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-</div>
-</nav>
+    <div class="nav-actions">
+      <div class="nav-links">
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+ 
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle light and dark mode">
+        ☾ Dark
+      </button>
+    </div>
+  </nav>
  
   <main id="home" class="container">
-<section class="hero">
-<div>
-<div class="eyebrow">
-<span class="status-dot"></span>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">
+          <span class="status-dot"></span>
           Business Analytics Student · Supply Chain Analytics
-</div>
+        </div>
  
         <h1>Hossain<br><span>Sowrob</span></h1>
  
-        <h2>Building dashboards and automation that turn operational data into clear decisions.</h2>
- 
-        <p>
-          I am a Business Analytics student at Western Michigan University focused on Power BI,
-          process automation, and supply-chain analytics. I enjoy turning complex data into
-          practical tools people can use.
-</p>
+        <h2>
+         I enjoy understanding how people work, identifying process challenges, 
+         and building practical solutions. Through analytics, automation, and continuous 
+         improvement, I create efficient and reliable ways to get work done. 
+        </h2>
  
         <div class="button-row">
-<a class="button button-primary" href="#projects">Explore My Work ↗</a>
-<a class="button button-secondary" href="assets/resume.pdf" target="_blank">View Résumé</a>
-</div>
+          <a class="button button-primary" href="#projects">Explore My Work ↗</a>
+ 
+          <a
+            class="button button-secondary"
+            href="assets/image/Hossain%20Sowrob%20Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer">
+            View Résumé
+          </a>
+        </div>
  
         <div class="quick-links">
-<a href="mailto:Sowrobh2003@gmail.com">Email</a>
+          <a href=mailto:Sowrobh2003@gmail.com>Email</a>
           ·
-<a href="https://github.com/hossainsowrob" target="_blank">GitHub</a>
+          <a href=https://github.com/hossainsowrob target="_blank" rel="noopener noreferrer">GitHub</a>
           ·
           Kalamazoo, Michigan
-</div>
-</div>
+        </div>
+      </div>
  
       <div class="photo-area">
-<div class="photo-shadow"></div>
+        <div class="photo-shadow"></div>
  
         <div class="photo-frame">
-<img
-            src="assets/image/B1E21BF8-6762-46E1-87AC-75FD920ED964_Original.jpeg"
+          <img
+            src="assets/image/hossain-headshot.jpg"
             alt="Professional headshot of Hossain Sowrob">
-</div>
+        </div>
  
         <div class="photo-note">
-<small>WESTERN MICHIGAN UNIVERSITY</small>
-<strong>BBA, Business Analytics</strong>
-<span>Expected May 2028</span>
-</div>
+          <small>WESTERN MICHIGAN UNIVERSITY</small>
+          <strong>BBA, Business Analytics & Supply Chain Management</strong>
+          <span>Expected May 2028</span>
+        </div>
  
         <div class="photo-note photo-note-bottom">
-<small>CURRENTLY</small>
-<strong>Supply Chain Intern</strong>
-<span>Analytics, reporting, and automation</span>
-</div>
-</div>
-</section>
- 
-    <section id="about">
-<div class="section-heading">
-<h2>About Me</h2>
-<p>
-          I combine business context with technical tools to improve reporting,
-          automate repeatable work, and make data easier to act on.
-</p>
-</div>
-</section>
+          <small>CURRENTLY</small>
+          <strong>Supply Chain Intern</strong>
+          <span>Analytics, reporting, and automation</span>
+        </div>
+      </div>
+    </section>
  
     <section id="experience">
-<div class="section-heading experience-heading">
-<div>
-<div class="eyebrow">
-<span class="status-dot"></span>
+      <div class="section-heading experience-heading">
+        <div>
+          <div class="eyebrow">
+            <span class="status-dot"></span>
             Professional Journey
-</div>
-<h2>Experience across analytics, operations, and service.</h2>
-</div>
+          </div>
+ 
+          <h2>Experience across analytics, operations, and service.</h2>
+        </div>
  
         <p>
           Select a role to explore responsibilities, contributions, and skills developed.
-</p>
-</div>
+        </p>
+      </div>
  
       <div class="experience-layout">
-<aside class="experience-menu">
-<button class="experience-tab active" data-role="flowserve">
-<span class="experience-number">01</span>
-<span>
-<strong>Flowserve Corporation</strong>
-<small>Supply Chain Intern</small>
-</span>
-</button>
+        <aside class="experience-menu">
+          <button class="experience-tab active" data-role="flowserve">
+            <span class="experience-number">01</span>
+            <span>
+              <strong>Flowserve Corporation</strong>
+              <small>Supply Chain Intern</small>
+            </span>
+          </button>
  
           <button class="experience-tab" data-role="rocket">
-<span class="experience-number">02</span>
-<span>
-<strong>Rocket Mortgage</strong>
-<small>Externship Participant</small>
-</span>
-</button>
+            <span class="experience-number">02</span>
+            <span>
+              <strong>Rocket Mortgage</strong>
+              <small>Externship Participant</small>
+            </span>
+          </button>
  
           <button class="experience-tab" data-role="wmu">
-<span class="experience-number">03</span>
-<span>
-<strong>WMU Student Center</strong>
-<small>Office & Information Center</small>
-</span>
-</button>
-</aside>
+            <span class="experience-number">03</span>
+            <span>
+              <strong>WMU Student Center</strong>
+              <small>Office & Information Center</small>
+            </span>
+          </button>
+        </aside>
  
         <div class="experience-detail">
-<article class="role-panel active" id="flowserve">
-<div class="role-topline">
-<div class="company-brand">
-<img
+          <article class="role-panel active" id="flowserve">
+            <div class="role-topline">
+              <div class="company-brand">
+                <img
                   src="assets/image/flowserve-logo.jpeg"
                   alt="Flowserve logo"
                   onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-<span class="logo-fallback">F</span>
+ 
+                <span class="logo-fallback">F</span>
  
                 <div>
-<p class="company-name">Flowserve Corporation · Kalamazoo, Michigan</p>
-<h3>Supply Chain Intern</h3>
-</div>
-</div>
+                  <p class="company-name">Flowserve Corporation · Kalamazoo, Michigan</p>
+                  <h3>Supply Chain Intern</h3>
+                </div>
+              </div>
  
               <span class="date-pill">August 2026 – Present</span>
-</div>
+            </div>
  
-            <p class="role-summary">
-              Supporting procurement and supply-chain operations through analytics,
-              reporting, automation, purchase-order support, and process improvement.
-</p>
+            <div class="role-details">
+              <p>
+                <strong>Power BI Reporting:</strong> Developed two Power BI solutions
+                for supply-chain operations: an operational performance report that
+                provides visibility into priorities, trends, and exceptions, and an
+                inventory-adjustment report that helps teams review adjustment activity
+                and focus follow-up efforts. Designed reports with KPI summaries,
+                trend analysis, category comparisons, filters, and record-level detail.
+              </p>
  
-            <ul class="role-list">
-<li>Develop interactive Power BI dashboards that turn complex operational information into performance summaries, trends, and guided detail analysis.</li>
-<li>Designed dashboard navigation so users can move from a summary metric to detailed records, investigate priorities, and return to the original report view.</li>
-<li>Co-developed an AI-enabled requisition workflow using Python, Power Automate, batch scripting, and AI-assisted validation.</li>
-<li>Enhanced an Excel VBA reporting tool to organize exception data, filter output across user-selected dimensions, and support structured follow-up.</li>
-<li>Support purchasing operations through purchase-order creation, SAP and Excel analysis, and coordination with internal stakeholders.</li>
-<li>Contribute to process-improvement efforts by identifying repeatable manual work that can be standardized or automated.</li>
-</ul>
+              <p>
+                <strong>Workflow Automation:</strong> Co-developed an AI-enabled
+                requisition automation workflow using Python, Power Automate, batch
+                scripting, and AI-assisted validation. Helped map manual process steps,
+                validate requirements with stakeholders, and improve workflow consistency,
+                reducing repetitive processing time by approximately 75 minutes per day.
+              </p>
+ 
+              <p>
+                <strong>Excel VBA Reporting:</strong> Repaired and enhanced an Excel
+                VBA reporting tool used to organize purchasing-exception information.
+                Improved business-rule logic and created flexible filtered outputs across
+                relevant business dimensions, helping users prepare structured information
+                for review, system updates, and supplier follow-up.
+              </p>
+ 
+              <p>
+                <strong>Purchasing Operations & Stakeholder Support:</strong> Support
+                daily purchasing operations through purchase-order creation, SAP and Excel
+                analysis, and coordination with internal stakeholders. Collaborate with
+                buyers, planners, and operations teams to understand workflow needs,
+                validate reporting logic, refine tools, and identify process improvements.
+              </p>
+            </div>
  
             <div class="tags">
-<span class="tag">Power BI</span>
-<span class="tag">Power Query</span>
-<span class="tag">DAX</span>
-<span class="tag">Excel VBA</span>
-<span class="tag">Python</span>
-<span class="tag">Power Automate</span>
-<span class="tag">SAP</span>
-<span class="tag">Process Improvement</span>
-</div>
-</article>
+              <span class="tag">Power BI</span>
+              <span class="tag">Power Query</span>
+              <span class="tag">DAX</span>
+              <span class="tag">Excel VBA</span>
+              <span class="tag">Python</span>
+              <span class="tag">Power Automate</span>
+              <span class="tag">SAP</span>
+              <span class="tag">Process Improvement</span>
+            </div>
+          </article>
  
           <article class="role-panel" id="rocket">
-<div class="role-topline">
-<div class="company-brand">
-<img
+            <div class="role-topline">
+              <div class="company-brand">
+                <img
                   src="assets/image/rocket-logo.png"
                   alt="Rocket Mortgage logo"
                   onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-<span class="logo-fallback">R</span>
+ 
+                <span class="logo-fallback">R</span>
  
                 <div>
-<p class="company-name">Rocket Mortgage</p>
-<h3>Externship Participant</h3>
-</div>
-</div>
+                  <p class="company-name">Rocket Mortgage</p>
+                  <h3>Externship Participant</h3>
+                </div>
+              </div>
  
               <span class="date-pill">Externship</span>
-</div>
+            </div>
  
             <p class="role-summary">
               Participated in a professional externship focused on business operations,
               financial services, career development, and cross-functional collaboration.
-</p>
+            </p>
  
             <ul class="role-list">
-<li>Participated in career exploration and professional development activities in a financial-services environment.</li>
-<li>Learned from industry professionals about customer experience, technology, operations, and teamwork.</li>
-<li>Strengthened communication, business analysis, and problem-solving skills through externship activities.</li>
-</ul>
+              <li>Participated in career exploration and professional development activities in a financial-services environment.</li>
+              <li>Learned from industry professionals about customer experience, technology, operations, and teamwork.</li>
+              <li>Strengthened communication, business analysis, and problem-solving skills through externship activities.</li>
+            </ul>
  
             <div class="tags">
-<span class="tag">Business Operations</span>
-<span class="tag">Professional Development</span>
-<span class="tag">Financial Services</span>
-<span class="tag">Communication</span>
-</div>
-</article>
+              <span class="tag">Business Operations</span>
+              <span class="tag">Professional Development</span>
+              <span class="tag">Financial Services</span>
+              <span class="tag">Communication</span>
+            </div>
+          </article>
  
           <article class="role-panel" id="wmu">
-<div class="role-topline">
-<div class="company-brand">
-<img
+            <div class="role-topline">
+              <div class="company-brand">
+                <img
                   src="assets/image/wmu-logo.jpeg"
                   alt="Western Michigan University logo"
                   onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-<span class="logo-fallback">W</span>
+ 
+                <span class="logo-fallback">W</span>
  
                 <div>
-<p class="company-name">Western Michigan University · Kalamazoo, Michigan</p>
-<h3>Administrative Office Assistant & Information Center Associate</h3>
-</div>
-</div>
+                  <p class="company-name">Western Michigan University · Kalamazoo, Michigan</p>
+                  <h3>Administrative Office Assistant & Information Center Associate</h3>
+                </div>
+              </div>
  
               <span class="date-pill">October 2025 – May 2026</span>
-</div>
+            </div>
  
             <p class="role-summary">
               Supported high-volume office and information-center operations while
               maintaining accurate records and coordinating campus communication.
-</p>
+            </p>
  
             <ul class="role-list">
-<li>Managed confidential databases for more than 500 students using validation and quality-control practices to maintain accurate information.</li>
-<li>Analyzed operational logs and visitor inquiry patterns to identify opportunities to improve workflow efficiency.</li>
-<li>Coordinated logistics and cross-department communication for more than 40 weekly campus events.</li>
-<li>Provided front-line information support and helped maintain organized, responsive office operations.</li>
-</ul>
+              <li>Managed confidential databases for more than 500 students using validation and quality-control practices.</li>
+              <li>Analyzed operational logs and visitor inquiry patterns to identify workflow-improvement opportunities.</li>
+              <li>Coordinated logistics and cross-department communication for more than 40 weekly campus events.</li>
+              <li>Provided front-line information support and helped maintain organized, responsive office operations.</li>
+            </ul>
  
             <div class="tags">
-<span class="tag">Operations Support</span>
-<span class="tag">Data Quality</span>
-<span class="tag">Event Coordination</span>
-<span class="tag">Customer Service</span>
-<span class="tag">Communication</span>
-</div>
-</article>
-</div>
-</div>
-</section>
+              <span class="tag">Operations Support</span>
+              <span class="tag">Data Quality</span>
+              <span class="tag">Event Coordination</span>
+              <span class="tag">Customer Service</span>
+              <span class="tag">Communication</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
  
     <section id="projects">
-<div class="section-heading">
-<h2>Selected Work</h2>
-<p>
-          Public descriptions use generalized language and do not include internal data,
-          confidential terminology, screenshots, or business records.
-</p>
-</div>
+      <div class="section-heading">
+        <div class="eyebrow">
+          <span class="status-dot"></span>
+          Portfolio
+        </div>
  
-      <div class="card-grid">
-<article class="project-card">
-<div class="project-visual">
-<strong>POWER BI</strong>
-<div class="mini-chart">
-<span style="height: 42%;"></span>
-<span style="height: 65%;"></span>
-<span style="height: 48%;"></span>
-<span style="height: 84%;"></span>
-<span style="height: 70%;"></span>
-<span style="height: 95%;"></span>
-</div>
-</div>
+        <h2>Projects</h2>
  
-          <div class="project-content">
-<h3>Interactive Operations Analytics Dashboard</h3>
-<p>
-              Designed Power BI dashboards that turn complex operational data into
-              KPI summaries, trends, exception views, and record-level investigation.
-</p>
+        <p>
+          Professional and academic work in business intelligence, process
+          automation, forecasting, financial analysis, and operational analytics.
+        </p>
+      </div>
  
-            <div class="tags">
-<span class="tag">Power BI</span>
-<span class="tag">Power Query</span>
-<span class="tag">DAX</span>
-<span class="tag">Data Visualization</span>
-</div>
+      <div class="projects-divider">
+        <span>Professional Projects</span>
+      </div>
  
-            <a class="project-link" href="projects/powerbi-dashboard.html">View Dashboard →</a>
-</div>
-</article>
+      <p class="projects-subtext">
+        Applied workplace projects focused on reporting, process automation, and
+        operational decision support. Descriptions use confidentiality-safe language.
+      </p>
  
-        <article class="project-card">
-<div class="project-visual gold">
-<strong>PROCESS AUTOMATION</strong>
-<div class="mini-chart">
-<span style="height: 28%;"></span>
-<span style="height: 48%;"></span>
-<span style="height: 64%;"></span>
-<span style="height: 53%;"></span>
-<span style="height: 86%;"></span>
-<span style="height: 98%;"></span>
-</div>
-</div>
+      <div class="portfolio-list">
+        <article class="portfolio-project">
+          <div class="project-number">P/01</div>
  
-          <div class="project-content">
-<h3>Requisition Workflow Automation</h3>
-<p>
-              Co-developed a workflow that reduced repetitive requisition-related work
-              using Python, Power Automate, batch scripting, and AI-assisted validation.
-</p>
+          <div class="project-main">
+            <p class="project-type">BUSINESS INTELLIGENCE · POWER BI</p>
+            <h3>Supply Chain Operations Reporting</h3>
+ 
+            <p>
+              Developed two Power BI reporting solutions for supply-chain operations:
+              an operational-performance report for reviewing priorities, trends, and
+              exceptions, and an inventory-adjustment report for analysis and follow-up
+              prioritization.
+            </p>
+ 
+            <p>
+              Built summary and detailed-analysis views combining KPI reporting, trend
+              analysis, category comparisons, filters, and record-level investigation.
+              Partnered with stakeholders to refine requirements and align reporting
+              with recurring operational reviews.
+            </p>
  
             <div class="tags">
-<span class="tag">Python</span>
-<span class="tag">Power Automate</span>
-<span class="tag">Automation</span>
-<span class="tag">AI Tools</span>
-</div>
+              <span class="tag">Power BI</span>
+              <span class="tag">Power Query</span>
+              <span class="tag">DAX</span>
+              <span class="tag">Data Modeling</span>
+              <span class="tag">Dashboard Design</span>
+            </div>
  
-            <a class="project-link" href="projects/requisition-automation.html">View Project →</a>
-</div>
-</article>
+            <a class="project-link" href="projects/powerbi-dashboard.html">
+              View Project Details →
+            </a>
+          </div>
  
-        <article class="project-card">
-<div class="project-visual green">
-<strong>EXCEL VBA</strong>
-<div class="mini-chart">
-<span style="height: 38%;"></span>
-<span style="height: 55%;"></span>
-<span style="height: 80%;"></span>
-<span style="height: 68%;"></span>
-<span style="height: 90%;"></span>
-<span style="height: 74%;"></span>
-</div>
-</div>
+          <div class="project-year">2026</div>
+        </article>
  
-          <div class="project-content">
-<h3>Excel Reporting & Automation Enhancement</h3>
-<p>
-              Improved an Excel VBA reporting tool that organizes exception data,
-              supports filtered analysis, and helps streamline follow-up work.
-</p>
+        <article class="portfolio-project">
+          <div class="project-number">P/02</div>
  
-            <div class="tags">
-<span class="tag">Excel</span>
-<span class="tag">VBA</span>
-<span class="tag">Process Improvement</span>
-</div>
+          <div class="project-main">
+            <p class="project-type">WORKFLOW AUTOMATION · PYTHON</p>
+            <h3>AI-Enabled Requisition Alignment Automation</h3>
  
-            <a class="project-link" href="projects/vba-automation.html">View Project →</a>
-</div>
-</article>
-</div>
-</section>
+            <p>
+              Co-developed an AI-enabled workflow that automated repetitive
+              requisition-related tasks through Python, Power Automate, batch
+              scripting, and AI-assisted validation.
+            </p>
  
-    <section>
-<div class="section-heading">
-<h2>Academic Projects</h2>
-<p>
-          Projects built with public or academic datasets that can be described
-          in more technical detail.
-</p>
-</div>
- 
-      <div class="card-grid">
-<article class="project-card">
-<div class="project-visual">
-<strong>FORECASTING</strong>
-</div>
- 
-          <div class="project-content">
-<h3>Walmart Weekly Sales Forecast</h3>
-<p>
-              Built a demand forecasting model and Power BI dashboard to support
-              inventory planning and staffing decisions.
-</p>
+            <p>
+              Collaborated with stakeholders to map the manual process, validate
+              requirements, and improve processing consistency. The solution reduced
+              repetitive processing time by approximately 75 minutes per day.
+            </p>
  
             <div class="tags">
-<span class="tag">Python</span>
-<span class="tag">Prophet</span>
-<span class="tag">Power BI</span>
-</div>
-</div>
-</article>
+              <span class="tag">SAP</span>
+              <span class="tag">Python</span>
+              <span class="tag">Power Automate</span>
+              <span class="tag">Batch Scripting</span>
+              <span class="tag">Microsoft Teams</span>
+              <span class="tag">Process Improvement</span>
+            </div>
  
-        <article class="project-card">
-<div class="project-visual green">
-<strong>DATA ANALYSIS</strong>
-</div>
+            <a class="project-link" href="projects/requisition-automation.html">
+              View Project Details →
+            </a>
+          </div>
  
-          <div class="project-content">
-<h3>Supply Chain Data Analysis</h3>
-<p>
-              Analyzed a large supply-chain dataset using Python, hypothesis testing,
-              and visualization to identify delivery patterns.
-</p>
+          <div class="project-year">2026</div>
+        </article>
  
-            <div class="tags">
-<span class="tag">Python</span>
-<span class="tag">Statistics</span>
-<span class="tag">Visualization</span>
-</div>
-</div>
-</article>
+        <article class="portfolio-project">
+          <div class="project-number">P/03</div>
  
-        <article class="project-card">
-<div class="project-visual gold">
-<strong>BUSINESS STRATEGY</strong>
-</div>
+          <div class="project-main">
+            <p class="project-type">REPORTING AUTOMATION · EXCEL VBA</p>
+            <h3>Excel VBA Reporting & Follow-Up Automation</h3>
  
-          <div class="project-content">
-<h3>Community Bank Case Competition</h3>
-<p>
-              Analyzed financial performance and delivered executive recommendations
-              as part of a nationally recognized student team.
-</p>
+            <p>
+              Repaired and enhanced an Excel VBA reporting tool used to retrieve,
+              organize, and filter purchasing-exception data across relevant
+              operational dimensions.
+            </p>
+ 
+            <p>
+              Improved business-rule logic and output flexibility so users could
+              prepare information for review, support system updates, and complete
+              structured supplier follow-up more efficiently.
+            </p>
  
             <div class="tags">
-<span class="tag">Financial Analysis</span>
-<span class="tag">PowerPoint</span>
-<span class="tag">Strategy</span>
-</div>
-</div>
-</article>
-</div>
-</section>
+              <span class="tag">Excel</span>
+              <span class="tag">VBA</span>
+              <span class="tag">SAP</span>
+              <span class="tag">Reporting Automation</span>
+              <span class="tag">Process Improvement</span>
+            </div>
+ 
+            <a class="project-link" href="projects/vba-automation.html">
+              View Project Details →
+            </a>
+          </div>
+ 
+          <div class="project-year">2026</div>
+        </article>
+      </div>
+ 
+      <div class="projects-divider">
+        <span>Academic Projects</span>
+      </div>
+ 
+      <h3 class="projects-subtitle">Academic Analytics & Strategy Projects</h3>
+ 
+      <p class="projects-subtext">
+        Public projects demonstrating forecasting, supply-chain analysis, financial
+        research, Excel dashboard design, and executive communication.
+      </p>
+ 
+      <div class="portfolio-list">
+        <article class="portfolio-project">
+          <div class="project-number">A/01</div>
+ 
+          <div class="project-main">
+            <div class="project-logo-row">
+              <img
+                src="assets/image/csbs-logo.png"
+                alt="CSBS logo"
+                onerror="this.style.display='none';">
+ 
+              <p class="project-type">FINANCIAL ANALYSIS · NATIONAL CASE COMPETITION</p>
+            </div>
+ 
+            <h3>CSBS Community Bank Case Study Competition</h3>
+ 
+            <p>
+              Conducted a financial analysis of a community bank, evaluating earnings
+              performance, loan-portfolio structure, credit risk, funding costs,
+              interest-rate exposure, capital, and liquidity.
+            </p>
+ 
+            <p>
+              Used UBPR, FFIEC Call Reports, Federal Reserve data, and public industry
+              sources to evaluate multi-year financial trends. Created an analytical
+              presentation and was selected among the Top 15 teams nationally.
+            </p>
+ 
+            <div class="tags">
+              <span class="tag">Financial Analysis</span>
+              <span class="tag">UBPR</span>
+              <span class="tag">FFIEC Call Reports</span>
+              <span class="tag">Risk Analysis</span>
+              <span class="tag">PowerPoint</span>
+              <span class="tag">Business Strategy</span>
+            </div>
+ 
+            <a
+              class="project-link"
+              href=https://github.com/hossainsowrob/CSBS-Community-Bank-Case-Study
+              target="_blank"
+              rel="noopener noreferrer">
+              View on GitHub →
+            </a>
+          </div>
+ 
+          <div class="project-year">2026</div>
+        </article>
+ 
+        <article class="portfolio-project">
+          <div class="project-number">A/02</div>
+ 
+          <div class="project-main">
+            <p class="project-type">FORECASTING · PYTHON · POWER BI</p>
+            <h3>Walmart Weekly Sales Forecast</h3>
+ 
+            <p>
+              Built an end-to-end retail forecasting workflow using historical Walmart
+              weekly-sales data. Cleaned and analyzed the data in Python, then developed
+              a Prophet-based model that generated weekly sales projections through 2027.
+            </p>
+ 
+            <p>
+              Created an interactive Power BI dashboard to visualize actual sales,
+              forecasted demand, trends, and seasonality. The project demonstrates how
+              forecasting supports inventory planning, staffing decisions, and long-term
+              demand visibility.
+            </p>
+ 
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Prophet</span>
+              <span class="tag">Power BI</span>
+              <span class="tag">Forecasting</span>
+              <span class="tag">Inventory Planning</span>
+            </div>
+ 
+            <a
+              class="project-link"
+              href=https://github.com/hossainsowrob/walmart-weekly-sales-forecast
+              target="_blank"
+              rel="noopener noreferrer">
+              View on GitHub →
+            </a>
+          </div>
+ 
+          <div class="project-year">2026</div>
+        </article>
+ 
+        <article class="portfolio-project">
+          <div class="project-number">A/03</div>
+ 
+          <div class="project-main">
+            <p class="project-type">SUPPLY CHAIN ANALYTICS · PYTHON · STATISTICS</p>
+            <h3>Supply Chain Decision Analysis</h3>
+ 
+            <p>
+              Analyzed global e-commerce supply-chain and logistics data to evaluate
+              shipping performance, delivery reliability, regional variation, and
+              operational inefficiencies through data cleaning, exploratory analysis,
+              visualization, and statistical testing.
+            </p>
+ 
+            <p>
+              Applied hypothesis testing to compare actual and scheduled shipping time,
+              then translated delivery-performance findings into recommendations for
+              improving operational priorities.
+            </p>
+ 
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">SciPy</span>
+              <span class="tag">Matplotlib</span>
+              <span class="tag">Seaborn</span>
+              <span class="tag">Hypothesis Testing</span>
+            </div>
+ 
+            <a
+              class="project-link"
+              href=https://github.com/hossainsowrob/supply-chain-decision-analysis
+              target="_blank"
+              rel="noopener noreferrer">
+              View on GitHub →
+            </a>
+          </div>
+ 
+          <div class="project-year">2026</div>
+        </article>
+ 
+        <article class="portfolio-project">
+          <div class="project-number">A/04</div>
+ 
+          <div class="project-main">
+            <p class="project-type">EXCEL DASHBOARD · PUBLIC DATA ANALYSIS</p>
+            <h3>Michigan Population & Housing Growth Analysis</h3>
+ 
+            <p>
+              Built an interactive Excel dashboard analyzing county-level population
+              and housing data across Michigan from 2020 through 2024 using U.S.
+              Census Bureau data. Combined datasets in Power Query and calculated
+              year-over-year growth rates using Excel formulas.
+            </p>
+ 
+            <p>
+              Created PivotTables, slicers, charts, and comparison views to evaluate
+              whether housing growth kept pace with population growth and highlight
+              potential housing pressure in high-growth counties.
+            </p>
+ 
+            <div class="tags">
+              <span class="tag">Excel</span>
+              <span class="tag">Power Query</span>
+              <span class="tag">PivotTables</span>
+              <span class="tag">Slicers</span>
+              <span class="tag">Data Visualization</span>
+              <span class="tag">U.S. Census Data</span>
+            </div>
+ 
+            <a
+              class="project-link"
+              href=https://github.com/hossainsowrob/Michigan-Population-and-Housing-Analysis
+              target="_blank"
+              rel="noopener noreferrer">
+              View on GitHub →
+            </a>
+          </div>
+ 
+          <div class="project-year">2026</div>
+        </article>
+      </div>
+    </section>
  
     <section id="contact">
-<div class="contact-box">
-<h2>Let’s Connect</h2>
-<p>
+      <div class="contact-box">
+        <h2>Let’s Connect</h2>
+ 
+        <p>
           I am interested in analytics, business intelligence, supply-chain data,
-          and process improvement opportunities.
-</p>
+          and process-improvement opportunities.
+        </p>
  
         <div class="button-row">
-<a class="button button-primary" href="mailto:Sowrobh2003@gmail.com">Email Me</a>
-<a class="button button-primary" href="https://github.com/hossainsowrob" target="_blank">GitHub</a>
-<a class="button button-primary" href="assets/resume.pdf" target="_blank">View Résumé</a>
-</div>
-</div>
-</section>
-</main>
+          <a class="button button-primary" href=mailto:Sowrobh2003@gmail.com>
+            Email Me
+          </a>
+ 
+          <a
+            class="button button-primary"
+            href="YOUR-LINKEDIN-URL"
+            target="_blank"
+            rel="noopener noreferrer">
+            LinkedIn
+          </a>
+ 
+          <a
+            class="button button-primary"
+            href=https://github.com/hossainsowrob
+            target="_blank"
+            rel="noopener noreferrer">
+            GitHub
+          </a>
+ 
+          <a
+            class="button button-primary"
+            href="assets/image/Hossain%20Sowrob%20Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer">
+            View Résumé
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
  
   <footer>
     © 2026 Hossain Sowrob · Built with GitHub Pages
-</footer>
+  </footer>
  
   <script>
     const experienceTabs = document.querySelectorAll(".experience-tab");
     const rolePanels = document.querySelectorAll(".role-panel");
+    const themeToggle = document.getElementById("theme-toggle");
  
     experienceTabs.forEach((tab) => {
       tab.addEventListener("click", () => {
@@ -1136,6 +1477,36 @@
         document.getElementById(selectedRole).classList.add("active");
       });
     });
-</script>
+ 
+    function updateThemeButton() {
+      const darkModeEnabled = document.body.classList.contains("dark-mode");
+ 
+      themeToggle.textContent = darkModeEnabled ? "☀ Light" : "☾ Dark";
+ 
+      themeToggle.setAttribute(
+        "aria-label",
+        darkModeEnabled ? "Switch to light mode" : "Switch to dark mode"
+      );
+    }
+ 
+    if (localStorage.getItem("portfolio-theme") === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+ 
+    updateThemeButton();
+ 
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+ 
+      const darkModeEnabled = document.body.classList.contains("dark-mode");
+ 
+      localStorage.setItem(
+        "portfolio-theme",
+        darkModeEnabled ? "dark" : "light"
+      );
+ 
+      updateThemeButton();
+    });
+  </script>
 </body>
 </html>
