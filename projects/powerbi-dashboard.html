@@ -3,19 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Operations Dashboard Demo | Hossain Sowrob</title>
+<title>Supply Chain Operations Reporting | Hossain Sowrob</title>
  
   <style>
     :root {
       --navy: #0b2239;
       --blue: #167d9d;
-      --teal: #47a59b;
-      --gold: #e5a53d;
-      --light: #f4f8fa;
-      --border: #dce7ed;
+      --light-blue: #eaf5f8;
+      --gold: #e9a93e;
       --text: #243444;
       --muted: #667785;
-      --white: #ffffff;
+      --border: #dce7ed;
     }
  
     * {
@@ -24,237 +22,90 @@
  
     body {
       margin: 0;
-      background: var(--light);
-      color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.55;
+      color: var(--text);
+      background: #f7fafc;
+      line-height: 1.65;
     }
  
     main {
-      width: min(1120px, 94%);
+      width: min(940px, 90%);
       margin: 0 auto;
-      padding: 34px 0 70px;
+      padding: 50px 0 75px;
     }
  
     .back {
       display: inline-block;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       color: var(--blue);
       font-weight: 800;
       text-decoration: none;
     }
  
-    .notice {
-      margin-bottom: 20px;
-      padding: 14px 16px;
-      border-left: 5px solid var(--gold);
-      border-radius: 10px;
-      background: #fff8e7;
-      color: #695022;
-      font-size: 0.92rem;
+    h1,
+    h2 {
+      color: var(--navy);
     }
  
-    .dashboard {
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background: var(--white);
-      box-shadow: 0 16px 42px rgba(11, 34, 57, 0.1);
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.3rem, 6vw, 4.4rem);
+      line-height: 1.05;
     }
  
-    .dashboard-header {
-      padding: 26px 30px;
-      color: white;
-      background: linear-gradient(135deg, var(--navy), var(--blue));
-    }
- 
-    .dashboard-header h1 {
-      margin: 0;
-      font-size: clamp(1.8rem, 4vw, 2.7rem);
-      line-height: 1.1;
-    }
- 
-    .dashboard-header p {
-      margin: 9px 0 0;
-      color: #d8f0f5;
-    }
- 
-    .dashboard-body {
-      padding: 24px;
-    }
- 
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
- 
-    .filter {
-      min-width: 160px;
-      padding: 10px 12px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: #fbfdfe;
-      color: #4c6473;
-      font-size: 0.87rem;
-    }
- 
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-    }
- 
-    .kpi {
-      padding: 18px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: white;
-    }
- 
-    .kpi-label {
+    .intro {
+      max-width: 760px;
       color: var(--muted);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
- 
-    .kpi-value {
-      margin: 8px 0 4px;
-      color: var(--navy);
-      font-size: 2rem;
-      font-weight: 900;
-    }
- 
-    .kpi-change {
-      color: var(--teal);
-      font-size: 0.84rem;
-      font-weight: 700;
-    }
- 
-    .visual-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 18px;
-      margin-top: 18px;
-    }
- 
-    .visual {
-      padding: 20px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: white;
-    }
- 
-    .visual h2 {
-      margin: 0 0 18px;
-      color: var(--navy);
       font-size: 1.08rem;
     }
  
-    .bars {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      height: 205px;
-      gap: 14px;
-      padding: 0 8px;
-      border-bottom: 1px solid #cbdde5;
+    .notice {
+      margin: 25px 0;
+      padding: 14px 16px;
+      border-left: 5px solid var(--gold);
+      border-radius: 10px;
+      color: #695022;
+      background: #fff8e7;
+      font-size: 0.92rem;
     }
  
-    .bar-group {
-      display: flex;
-      flex: 1;
-      height: 100%;
-      flex-direction: column;
-      justify-content: end;
-      align-items: center;
-      gap: 7px;
-      color: var(--muted);
-      font-size: 0.73rem;
+    .panel {
+      margin-top: 22px;
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: white;
+      box-shadow: 0 8px 22px rgba(11, 34, 57, 0.05);
     }
  
-    .bar {
-      width: 75%;
-      border-radius: 8px 8px 0 0;
-      background: linear-gradient(to top, var(--blue), #65b7cd);
+    .panel h2 {
+      margin-top: 0;
+      font-size: 1.35rem;
     }
  
-    .priority-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
     }
  
-    .priority-list li {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid #edf2f4;
-      font-size: 0.9rem;
-    }
- 
-    .priority-list li:last-child {
-      border-bottom: 0;
-    }
- 
-    .status {
-      padding: 3px 8px;
-      border-radius: 999px;
-      color: #895b14;
-      background: #fff0cf;
-      font-size: 0.75rem;
-      font-weight: 800;
-    }
- 
-    .detail-table {
-      width: 100%;
-      margin-top: 18px;
-      overflow: hidden;
+    .report-card {
+      padding: 20px;
       border: 1px solid var(--border);
       border-radius: 14px;
-      border-collapse: collapse;
-      background: white;
-      font-size: 0.86rem;
+      background: #fbfdfe;
     }
  
-    .detail-table th,
-    .detail-table td {
-      padding: 12px;
-      text-align: left;
-      border-bottom: 1px solid #edf2f4;
-    }
- 
-    .detail-table th {
-      color: #496270;
-      background: #f7fafc;
-      font-size: 0.76rem;
-      text-transform: uppercase;
-    }
- 
-    .detail-table tr:last-child td {
-      border-bottom: 0;
-    }
- 
-    .skills {
-      margin-top: 25px;
-      padding: 22px;
-      border-radius: 14px;
-      background: #eaf5f8;
-    }
- 
-    .skills h2 {
+    .report-card h3 {
       margin: 0 0 10px;
       color: var(--navy);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
     }
  
-    .skills p {
-      margin: 0 0 10px;
-      color: #426170;
+    .report-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
     }
  
     .tag {
@@ -263,45 +114,26 @@
       padding: 6px 10px;
       border-radius: 999px;
       color: #24617a;
-      background: white;
-      font-size: 0.8rem;
+      background: var(--light-blue);
+      font-size: 0.82rem;
       font-weight: 800;
     }
  
-    @media (max-width: 780px) {
-      .kpi-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
- 
-      .visual-grid {
-        grid-template-columns: 1fr;
-      }
+    ul {
+      padding-left: 22px;
     }
  
-    @media (max-width: 480px) {
-      main {
-        width: min(96%, 1120px);
-      }
+    li {
+      margin-bottom: 10px;
+    }
  
-      .kpi-grid {
+    @media (max-width: 650px) {
+      .report-grid {
         grid-template-columns: 1fr;
       }
  
-      .dashboard-body {
-        padding: 15px;
-      }
- 
-      .dashboard-header {
-        padding: 20px;
-      }
- 
-      .detail-table {
-        font-size: 0.73rem;
-      }
- 
-      .detail-table th,
-      .detail-table td {
-        padding: 9px 6px;
+      main {
+        width: min(94%, 940px);
       }
     }
 </style>
@@ -311,153 +143,66 @@
 <main>
 <a class="back" href="../index.html">← Back to portfolio</a>
  
-    <div class="notice">
-      Portfolio demonstration only: every label, figure, chart, and record on this page is fictional.
-      No internal dashboard, company data, supplier information, or confidential performance metrics are shown.
-</div>
+    <h1>Supply Chain Operations Reporting</h1>
  
-    <section class="dashboard">
-<header class="dashboard-header">
-<h1>Operations Performance Dashboard</h1>
-<p>Dashboard design for prioritization, trend review, and detailed follow-up.</p>
-</header>
- 
-      <div class="dashboard-body">
-<div class="filters">
-<div class="filter">Period: Current Month ▾</div>
-<div class="filter">Team: All Teams ▾</div>
-<div class="filter">Category: All Categories ▾</div>
-</div>
- 
-        <div class="kpi-grid">
-<article class="kpi">
-<div class="kpi-label">Open Items</div>
-<div class="kpi-value">184</div>
-<div class="kpi-change">↓ 12% vs. prior period</div>
-</article>
- 
-          <article class="kpi">
-<div class="kpi-label">Priority Items</div>
-<div class="kpi-value">37</div>
-<div class="kpi-change">↑ 5 items this week</div>
-</article>
- 
-          <article class="kpi">
-<div class="kpi-label">On-Time Rate</div>
-<div class="kpi-value">92%</div>
-<div class="kpi-change">↑ 3 points vs. target</div>
-</article>
- 
-          <article class="kpi">
-<div class="kpi-label">Items Resolved</div>
-<div class="kpi-value">126</div>
-<div class="kpi-change">↑ 18% vs. prior period</div>
-</article>
-</div>
- 
-        <div class="visual-grid">
-<article class="visual">
-<h2>Weekly Activity Trend</h2>
- 
-            <div class="bars">
-<div class="bar-group">
-<div class="bar" style="height: 44%;"></div>
-                W1
-</div>
- 
-              <div class="bar-group">
-<div class="bar" style="height: 61%;"></div>
-                W2
-</div>
- 
-              <div class="bar-group">
-<div class="bar" style="height: 52%;"></div>
-                W3
-</div>
- 
-              <div class="bar-group">
-<div class="bar" style="height: 79%;"></div>
-                W4
-</div>
- 
-              <div class="bar-group">
-<div class="bar" style="height: 66%;"></div>
-                W5
-</div>
- 
-              <div class="bar-group">
-<div class="bar" style="height: 89%;"></div>
-                W6
-</div>
-</div>
-</article>
- 
-          <article class="visual">
-<h2>Follow-Up Priorities</h2>
- 
-            <ul class="priority-list">
-<li><span>Category A</span><span class="status">High</span></li>
-<li><span>Category B</span><span class="status">High</span></li>
-<li><span>Category C</span><span class="status">Review</span></li>
-<li><span>Category D</span><span class="status">Review</span></li>
-<li><span>Category E</span><span class="status">Monitor</span></li>
-</ul>
-</article>
-</div>
- 
-        <table class="detail-table">
-<thead>
-<tr>
-<th>Reference</th>
-<th>Category</th>
-<th>Owner</th>
-<th>Priority</th>
-<th>Status</th>
-</tr>
-</thead>
- 
-          <tbody>
-<tr>
-<td>DEMO-1001</td>
-<td>Category A</td>
-<td>Team Alpha</td>
-<td>High</td>
-<td>In Review</td>
-</tr>
- 
-            <tr>
-<td>DEMO-1002</td>
-<td>Category B</td>
-<td>Team Beta</td>
-<td>High</td>
-<td>Action Needed</td>
-</tr>
- 
-            <tr>
-<td>DEMO-1003</td>
-<td>Category C</td>
-<td>Team Alpha</td>
-<td>Medium</td>
-<td>Monitoring</td>
-</tr>
-</tbody>
-</table>
- 
-        <section class="skills">
-<h2>What This Demonstrates</h2>
-<p>
-            I designed Power BI reporting experiences that combine summary KPIs,
-            filters, trends, detailed records, and navigation so users can
-            investigate operational priorities efficiently.
+    <p class="intro">
+      Developed Power BI reporting solutions that help supply-chain teams review
+      operational performance, identify exceptions, prioritize follow-up activity,
+      and investigate detailed records.
 </p>
  
-          <span class="tag">Power BI</span>
+    <div class="notice">
+      This page describes professional work using confidentiality-safe language.
+      It does not include internal dashboards, source data, supplier information,
+      report names, company metrics, or screenshots.
+</div>
+ 
+    <section class="panel">
+<h2>Power BI Solutions</h2>
+ 
+      <div class="report-grid">
+<article class="report-card">
+<h3>Operational Performance Reporting</h3>
+<p>
+            Designed a report that organizes Unacknowledged, Late, Express work orders and exceptions orders by KPI, 
+            date-based trends, team filters,and detailed follow-up records for recurring business review. Our team use
+            this report for everyday team meeting with manager.
+</p>
+</article>
+ 
+        <article class="report-card">
+<h3>Inventory Adjustment Analysis</h3>
+<p>
+            Developed a Power BI dashboard to analyze production-order material substitutions and 
+            their inventory impact.It tracks add-backs, removals, net adjustments, and exception reasons 
+           using interactive visuals and detail pages.The report helps users identify high-impact materials 
+           and investigate individual orders quickly.
+</p>
+</article>
+</div>
+</section>
+    <section class="panel">
+<h2>My Contribution</h2>
+ 
+      <ul>
+<li>Led the end-to-end development of Power BI reporting solutions, translating operational needs into intuitive dashboards and actionable analysis views.</li>
+<li>Built interactive KPI dashboards, trend analysis, category comparisons, dynamic filters, and detailed drill-down pages to support root-cause investigation.</li>
+<li>Designed a structured reporting experience that enables stakeholders to move seamlessly from executive-level performance insights to transaction-level operational detail.</li>
+<li>Collaborated closely with buyers, planners, and operations teams to define requirements, validate business logic, and continuously improve reporting accuracy and usability.</li>
+<li>Delivered scalable reports that supported recurring operational reviews, performance tracking, and data-driven follow-up actions.</li>
+</ul>
+</section>
+ 
+    <section class="panel">
+<h2>Tools Used</h2>
+ 
+      <span class="tag">Power BI</span>
 <span class="tag">Power Query</span>
 <span class="tag">DAX</span>
+<span class="tag">Excel</span>
 <span class="tag">Data Modeling</span>
-<span class="tag">Dashboard UX</span>
-</section>
-</div>
+<span class="tag">Data Visualization</span>
+<span class="tag">Stakeholder Collaboration</span>
 </section>
 </main>
 </body>
