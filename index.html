@@ -1,11 +1,797 @@
-hossainsowrob.github.io/
-├── index.html
-├── style.css
-├── script.js
-├── assets/
-│   ├── resume.pdf
-│   ├── profile-photo.jpg
-│   └── images/
-│       ├── dashboard-sample-1.png
-│       └── dashboard-sample-2.png
-└── README.md
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hossain Sowrob | Analytics Portfolio</title>
+<style>
+    :root {
+      --navy: #0b2239;
+      --blue: #167d9d;
+      --light-blue: #eaf5f8;
+      --gold: #e9a93e;
+      --text: #243444;
+      --muted: #667785;
+      --white: #ffffff;
+      --border: #dce7ed;
+    }
+ 
+    * {
+      box-sizing: border-box;
+    }
+ 
+    html {
+      scroll-behavior: smooth;
+    }
+ 
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        linear-gradient(rgba(11, 34, 57, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(11, 34, 57, 0.035) 1px, transparent 1px),
+        #fbfdfe;
+      background-size: 28px 28px;
+      line-height: 1.6;
+    }
+ 
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+ 
+    .navbar {
+      position: sticky;
+      top: 16px;
+      z-index: 20;
+      width: min(980px, 92%);
+      margin: 16px auto 0;
+      padding: 12px 18px;
+      border: 1px solid rgba(220, 231, 237, 0.9);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 28px rgba(11, 34, 57, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+ 
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--navy);
+      font-weight: 800;
+      text-decoration: none;
+    }
+ 
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      color: white;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      font-size: 0.85rem;
+    }
+ 
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 14px;
+    }
+ 
+    .nav-links a {
+      color: #536675;
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+ 
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+ 
+    .hero {
+      min-height: 670px;
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 56px;
+      align-items: center;
+      padding: 72px 0 64px;
+    }
+ 
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      padding: 7px 12px;
+      border: 1px solid #d8e9ef;
+      border-radius: 999px;
+      background: white;
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+ 
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #3fb179;
+      box-shadow: 0 0 0 4px #dff5e9;
+    }
+ 
+    h1 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(3.1rem, 8vw, 6.5rem);
+      line-height: 0.93;
+      letter-spacing: -0.07em;
+    }
+ 
+    h1 span {
+      color: var(--blue);
+    }
+ 
+    .hero h2 {
+      max-width: 640px;
+      margin: 24px 0 14px;
+      color: #21445f;
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      line-height: 1.3;
+    }
+ 
+    .hero p {
+      max-width: 610px;
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+ 
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 28px 0 18px;
+    }
+ 
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+ 
+    .button:hover {
+      transform: translateY(-2px);
+    }
+ 
+    .button-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      box-shadow: 0 12px 24px rgba(22, 125, 157, 0.22);
+    }
+ 
+    .button-secondary {
+      color: var(--navy);
+      border: 1px solid var(--border);
+      background: white;
+    }
+ 
+    .quick-links {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+ 
+    .quick-links a {
+      color: var(--blue);
+      font-weight: 700;
+      text-decoration: none;
+    }
+ 
+    .photo-area {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 470px;
+    }
+ 
+    .photo-shadow {
+      position: absolute;
+      width: 300px;
+      height: 340px;
+      border-radius: 42px;
+      background: linear-gradient(135deg, #cfeff4, #f8d9a8);
+      transform: rotate(9deg);
+    }
+ 
+    .photo-frame {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 355px);
+      padding: 12px;
+      border: 11px solid rgba(255, 255, 255, 0.88);
+      border-radius: 34px;
+      background: white;
+      box-shadow: 0 22px 50px rgba(11, 34, 57, 0.2);
+    }
+ 
+    .photo-frame img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 20px;
+      background: #dfe8ec;
+    }
+ 
+    .photo-note {
+      position: absolute;
+      z-index: 3;
+      right: -12px;
+      top: 72px;
+      max-width: 178px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: white;
+      box-shadow: 0 12px 30px rgba(11, 34, 57, 0.14);
+      font-size: 0.82rem;
+    }
+ 
+    .photo-note strong {
+      display: block;
+      color: var(--navy);
+      font-size: 0.95rem;
+    }
+ 
+    .photo-note-bottom {
+      right: auto;
+      left: -28px;
+      top: auto;
+      bottom: 58px;
+    }
+ 
+    section {
+      padding: 78px 0;
+    }
+ 
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 32px;
+    }
+ 
+    .section-heading h2 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.04em;
+    }
+ 
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+    }
+ 
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+ 
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-height: 390px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 12px 28px rgba(11, 34, 57, 0.06);
+    }
+ 
+    .project-visual {
+      min-height: 145px;
+      padding: 22px;
+      color: white;
+      background: linear-gradient(135deg, #0b2239, #167d9d);
+    }
+ 
+    .project-visual.gold {
+      background: linear-gradient(135deg, #66451c, #e9a93e);
+    }
+ 
+    .project-visual.green {
+      background: linear-gradient(135deg, #164c4e, #46a38e);
+    }
+ 
+    .mini-chart {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      align-items: end;
+      height: 72px;
+      gap: 8px;
+      margin-top: 18px;
+    }
+ 
+    .mini-chart span {
+      display: block;
+      border-radius: 5px 5px 0 0;
+      background: rgba(255, 255, 255, 0.78);
+    }
+ 
+    .project-content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 22px;
+    }
+ 
+    .project-content h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 1.22rem;
+    }
+ 
+    .project-content p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+ 
+    .tags {
+      margin-top: auto;
+    }
+ 
+    .tag {
+      display: inline-block;
+      margin: 4px 4px 0 0;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--light-blue);
+      color: #24617a;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+ 
+    .project-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--blue);
+      font-weight: 800;
+      text-decoration: none;
+    }
+ 
+    .project-link:hover {
+      text-decoration: underline;
+    }
+ 
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+ 
+    .process-step {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: white;
+    }
+ 
+    .process-step .number {
+      color: var(--blue);
+      font-weight: 900;
+      font-size: 1.4rem;
+    }
+ 
+    .process-step h3 {
+      margin: 8px 0;
+      color: var(--navy);
+      font-size: 1.05rem;
+    }
+ 
+    .process-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+ 
+    .contact-box {
+      padding: 36px;
+      border-radius: 24px;
+      color: white;
+      background: linear-gradient(135deg, var(--navy), #145f79);
+    }
+ 
+    .contact-box h2 {
+      margin-top: 0;
+      font-size: 2rem;
+    }
+ 
+    .contact-box p {
+      max-width: 650px;
+      color: #dceff6;
+    }
+ 
+    .contact-box a {
+      color: white;
+    }
+ 
+    footer {
+      padding: 30px 20px;
+      color: #6e7e8a;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+ 
+    @media (max-width: 860px) {
+      .navbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+ 
+      .nav-links {
+        justify-content: flex-start;
+      }
+ 
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-top: 48px;
+      }
+ 
+      .photo-area {
+        order: -1;
+        min-height: 410px;
+      }
+ 
+      .card-grid,
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+ 
+    @media (max-width: 560px) {
+      .navbar {
+        top: 8px;
+      }
+ 
+      .nav-links {
+        gap: 10px;
+      }
+ 
+      .nav-links a {
+        font-size: 0.8rem;
+      }
+ 
+      .hero {
+        min-height: auto;
+      }
+ 
+      h1 {
+        font-size: 3.3rem;
+      }
+ 
+      .photo-note {
+        right: 0;
+      }
+ 
+      .photo-note-bottom {
+        left: 0;
+      }
+ 
+      .card-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+ 
+      .contact-box {
+        padding: 26px;
+      }
+    }
+</style>
+</head>
+ 
+<body>
+<nav class="navbar">
+<a class="brand" href="#home">
+<span class="brand-mark">HS</span>
+<span>Hossain Sowrob</span>
+</a>
+ 
+    <div class="nav-links">
+<a href="#about">About</a>
+<a href="#experience">Experience</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+ 
+  <main id="home" class="container">
+<section class="hero">
+<div>
+<div class="eyebrow">
+<span class="status-dot"></span>
+          Business Analytics Student · Supply Chain Analytics
+</div>
+ 
+        <h1>Hossain<br><span>Sowrob</span></h1>
+ 
+        <h2>Building dashboards and automation that turn operational data into clear decisions.</h2>
+ 
+        <p>
+          I am a Business Analytics student at Western Michigan University
+          focused on Power BI, process automation, and supply-chain analytics.
+          I enjoy turning complex data into practical tools people can use.
+</p>
+ 
+        <div class="button-row">
+<a class="button button-primary" href="#projects">Explore My Work ↗</a>
+<a class="button button-secondary" href="assets/resume.pdf" target="_blank">View Résumé</a>
+</div>
+ 
+        <div class="quick-links">
+<a href="mailto:Sowrobh2003@gmail.com">Email</a>
+          ·
+<a href="https://github.com/hossainsowrob" target="_blank">GitHub</a>
+          ·
+          Kalamazoo, Michigan
+</div>
+</div>
+ 
+      <div class="photo-area">
+<div class="photo-shadow"></div>
+ 
+        <div class="photo-frame">
+<img src="assets/images/hossain-headshot.jpg" alt="Professional headshot of Hossain Sowrob">
+</div>
+ 
+        <div class="photo-note">
+<small>WESTERN MICHIGAN UNIVERSITY</small>
+<strong>BBA, Business Analytics</strong>
+<span>Expected May 2028</span>
+</div>
+ 
+        <div class="photo-note photo-note-bottom">
+<small>CURRENTLY</small>
+<strong>Supply Chain Intern</strong>
+<span>Analytics, reporting, and automation</span>
+</div>
+</div>
+</section>
+ 
+    <section id="about">
+<div class="section-heading">
+<h2>About Me</h2>
+<p>
+          I combine business context with technical tools to improve reporting,
+          automate repeatable work, and make data easier to act on.
+</p>
+</div>
+</section>
+ 
+    <section id="experience">
+<div class="section-heading">
+<h2>What I Build</h2>
+<p>My work centers on clear reporting, practical automation, and decision support.</p>
+</div>
+ 
+      <div class="process-grid">
+<article class="process-step">
+<div class="number">01</div>
+<h3>Understand the workflow</h3>
+<p>Learn what users need to review, prioritize, and follow up on during daily operations.</p>
+</article>
+ 
+        <article class="process-step">
+<div class="number">02</div>
+<h3>Prepare the data</h3>
+<p>Organize data for reporting, filters, trend analysis, and detailed record review.</p>
+</article>
+ 
+        <article class="process-step">
+<div class="number">03</div>
+<h3>Build the experience</h3>
+<p>Create Power BI views, clear KPIs, interactive navigation, and useful detail pages.</p>
+</article>
+ 
+        <article class="process-step">
+<div class="number">04</div>
+<h3>Improve the process</h3>
+<p>Use automation and reporting to reduce repetitive work and support timely action.</p>
+</article>
+</div>
+</section>
+ 
+    <section id="projects">
+<div class="section-heading">
+<h2>Selected Work</h2>
+<p>
+          Public descriptions use generalized language and do not include internal data,
+          confidential terminology, screenshots, or business records.
+</p>
+</div>
+ 
+      <div class="card-grid">
+<article class="project-card">
+<div class="project-visual">
+<strong>POWER BI</strong>
+<div class="mini-chart">
+<span style="height: 42%;"></span>
+<span style="height: 65%;"></span>
+<span style="height: 48%;"></span>
+<span style="height: 84%;"></span>
+<span style="height: 70%;"></span>
+<span style="height: 95%;"></span>
+</div>
+</div>
+ 
+          <div class="project-content">
+<h3>Interactive Operations Analytics Dashboard</h3>
+<p>
+              Designed Power BI dashboards that turn complex operational data into
+              KPI summaries, trends, exception views, and record-level investigation.
+</p>
+ 
+            <div class="tags">
+<span class="tag">Power BI</span>
+<span class="tag">Power Query</span>
+<span class="tag">DAX</span>
+<span class="tag">Data Visualization</span>
+</div>
+ 
+            <a class="project-link" href="powerbi-dashboard.html">View case study →</a>
+</div>
+</article>
+ 
+        <article class="project-card">
+<div class="project-visual gold">
+<strong>PROCESS AUTOMATION</strong>
+<div class="mini-chart">
+<span style="height: 28%;"></span>
+<span style="height: 48%;"></span>
+<span style="height: 64%;"></span>
+<span style="height: 53%;"></span>
+<span style="height: 86%;"></span>
+<span style="height: 98%;"></span>
+</div>
+</div>
+ 
+          <div class="project-content">
+<h3>Requisition Workflow Automation</h3>
+<p>
+              Co-developed a workflow that reduced repetitive requisition-related work
+              using Python, Power Automate, batch scripting, and AI-assisted validation.
+</p>
+ 
+            <div class="tags">
+<span class="tag">Python</span>
+<span class="tag">Power Automate</span>
+<span class="tag">Automation</span>
+<span class="tag">AI Tools</span>
+</div>
+ 
+            <a class="project-link" href="requisition-automation.html">View case study →</a>
+</div>
+</article>
+ 
+        <article class="project-card">
+<div class="project-visual green">
+<strong>EXCEL VBA</strong>
+<div class="mini-chart">
+<span style="height: 38%;"></span>
+<span style="height: 55%;"></span>
+<span style="height: 80%;"></span>
+<span style="height: 68%;"></span>
+<span style="height: 90%;"></span>
+<span style="height: 74%;"></span>
+</div>
+</div>
+ 
+          <div class="project-content">
+<h3>Excel Reporting & Automation Enhancement</h3>
+<p>
+              Improved an Excel VBA reporting tool that organizes exception data,
+              supports filtered analysis, and helps streamline follow-up work.
+</p>
+ 
+            <div class="tags">
+<span class="tag">Excel</span>
+<span class="tag">VBA</span>
+<span class="tag">Process Improvement</span>
+</div>
+ 
+            <a class="project-link" href="vba-automation.html">View case study →</a>
+</div>
+</article>
+</div>
+</section>
+ 
+    <section>
+<div class="section-heading">
+<h2>Academic Projects</h2>
+<p>Projects built with public or academic datasets that can be described in more technical detail.</p>
+</div>
+ 
+      <div class="card-grid">
+<article class="project-card">
+<div class="project-visual">
+<strong>FORECASTING</strong>
+</div>
+<div class="project-content">
+<h3>Walmart Weekly Sales Forecast</h3>
+<p>Built a demand forecasting model and Power BI dashboard to support inventory planning and staffing decisions.</p>
+<div class="tags">
+<span class="tag">Python</span>
+<span class="tag">Prophet</span>
+<span class="tag">Power BI</span>
+</div>
+</div>
+</article>
+ 
+        <article class="project-card">
+<div class="project-visual green">
+<strong>DATA ANALYSIS</strong>
+</div>
+<div class="project-content">
+<h3>Supply Chain Data Analysis</h3>
+<p>Analyzed a large supply-chain dataset using Python, hypothesis testing, and visualization to identify delivery patterns.</p>
+<div class="tags">
+<span class="tag">Python</span>
+<span class="tag">Statistics</span>
+<span class="tag">Visualization</span>
+</div>
+</div>
+</article>
+ 
+        <article class="project-card">
+<div class="project-visual gold">
+<strong>BUSINESS STRATEGY</strong>
+</div>
+<div class="project-content">
+<h3>Community Bank Case Competition</h3>
+<p>Analyzed financial performance and delivered executive recommendations as part of a nationally recognized student team.</p>
+<div class="tags">
+<span class="tag">Financial Analysis</span>
+<span class="tag">PowerPoint</span>
+<span class="tag">Strategy</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+ 
+    <section id="contact">
+<div class="contact-box">
+<h2>Let’s Connect</h2>
+<p>
+          I am interested in analytics, business intelligence, supply-chain data,
+          and process improvement opportunities.
+</p>
+ 
+        <div class="button-row">
+<a class="button button-secondary" href="mailto:Sowrobh2003@gmail.com">Email Me</a>
+<a class="button button-secondary" href="https://github.com/hossainsowrob" target="_blank">GitHub</a>
+<a class="button button-secondary" href="assets/resume.pdf" target="_blank">View Résumé</a>
+</div>
+</div>
+</section>
+</main>
+ 
+  <footer>
+    © 2026 Hossain Sowrob · Built with GitHub Pages
+</footer>
+</body>
+</html>
